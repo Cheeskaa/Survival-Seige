@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d0bp2uai0khcj"]
+
+[ext_resource type="Texture2D" uid="uid://8brsgj8gyoqu" path="res://sprites/characters/player/16x16 All Animations-Sheet.png" id="1_s67x6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d0ex"]
+atlas = ExtResource("1_s67x6")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5fc4"]
+atlas = ExtResource("1_s67x6")
+region = Rect2(180, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voma2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d0ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5fc4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="player" type="CharacterBody2D" unique_id=572807209]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=681923692]
+sprite_frames = SubResource("SpriteFrames_voma2")
+animation = &"idle"
+frame_progress = 0.7605076
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=5176929]

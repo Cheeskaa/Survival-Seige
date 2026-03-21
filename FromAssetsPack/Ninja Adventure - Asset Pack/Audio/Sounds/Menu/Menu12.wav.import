@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ul2ujp5n3u0h"
+path="res://.godot/imported/Menu12.wav-9587d3a4b0b60fb6ddfb9364b97a5690.sample"
+
+[deps]
+
+source_file="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Menu/Menu12.wav"
+dest_files=["res://.godot/imported/Menu12.wav-9587d3a4b0b60fb6ddfb9364b97a5690.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
