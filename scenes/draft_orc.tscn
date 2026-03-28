@@ -106,8 +106,11 @@ height = 16.0
 [node name="Orc" type="CharacterBody2D" unique_id=1023008355]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1872775177]
+texture_filter = 1
+position = Vector2(21, 16)
 sprite_frames = SubResource("SpriteFrames_clle4")
 animation = &"idle"
+frame_progress = 0.57999164
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=919915637]
 shape = SubResource("CapsuleShape2D_u668v")

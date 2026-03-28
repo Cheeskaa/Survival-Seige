@@ -156,8 +156,10 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=645973709]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910462947]
+texture_filter = 1
+position = Vector2(35, 18)
 sprite_frames = SubResource("SpriteFrames_20oes")
-animation = &"hurt"
-frame_progress = 0.032804467
+animation = &"run_right"
+frame_progress = 0.48431316
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1459752992]
