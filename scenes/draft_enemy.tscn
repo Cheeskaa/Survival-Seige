@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bou32bkgg1as1"]
+
+[ext_resource type="Texture2D" uid="uid://p34f1v8b7gff" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Actor/Boss/DemonCyclop/Idle.png" id="1_5d253"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8whr"]
+atlas = ExtResource("1_5d253")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmeb2"]
+atlas = ExtResource("1_5d253")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0s1s"]
+atlas = ExtResource("1_5d253")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbygk"]
+atlas = ExtResource("1_5d253")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m52jp"]
+atlas = ExtResource("1_5d253")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4a2xp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8whr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmeb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0s1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbygk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m52jp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iq0an"]
+radius = 17.029387
+
+[node name="DraftEnemy" type="CharacterBody2D" unique_id=183549538]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1196213282]
+position = Vector2(-1, -19)
+sprite_frames = SubResource("SpriteFrames_4a2xp")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534091517]
+position = Vector2(-1, -19)
+shape = SubResource("CircleShape2D_iq0an")
