@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dy34qtl42kt7t"]
+
+[ext_resource type="Texture2D" uid="uid://blucog31y1pgj" path="res://FromAssetsPack/craftpix-net-788364-free-slime-mobs-pixel-art-top-down-sprite-pack/PNG/Slime1/Parts/Slime1_Idle_body.png" id="1_w33wy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i464b"]
+atlas = ExtResource("1_w33wy")
+region = Rect2(0, 0, 64, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndpp3"]
+atlas = ExtResource("1_w33wy")
+region = Rect2(64, 0, 64, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0edgy"]
+atlas = ExtResource("1_w33wy")
+region = Rect2(128, 0, 64, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00t88"]
+atlas = ExtResource("1_w33wy")
+region = Rect2(192, 0, 64, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2eh5"]
+atlas = ExtResource("1_w33wy")
+region = Rect2(256, 0, 64, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4a15"]
+atlas = ExtResource("1_w33wy")
+region = Rect2(320, 0, 64, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xcxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i464b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndpp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0edgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00t88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2eh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4a15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkldh"]
+radius = 7.0
+
+[node name="draftslime" type="CharacterBody2D" unique_id=350030379]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1316825402]
+position = Vector2(1, -22)
+sprite_frames = SubResource("SpriteFrames_7xcxn")
+autoplay = "default"
+frame_progress = 0.24158958
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521897947]
+position = Vector2(1, -10)
+shape = SubResource("CircleShape2D_lkldh")
