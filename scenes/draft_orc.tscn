@@ -107,7 +107,8 @@ height = 16.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1872775177]
 texture_filter = 1
-position = Vector2(21, 16)
+position = Vector2(-3, -2)
+scale = Vector2(3.0300002, 2.7749996)
 sprite_frames = SubResource("SpriteFrames_clle4")
 animation = &"idle"
 autoplay = "idle"
