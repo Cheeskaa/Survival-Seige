@@ -157,7 +157,8 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910462947]
 texture_filter = 1
-position = Vector2(35, 18)
+position = Vector2(55.5, 40)
+scale = Vector2(2.28125, 2.375)
 sprite_frames = SubResource("SpriteFrames_20oes")
 animation = &"idle"
 autoplay = "idle"
