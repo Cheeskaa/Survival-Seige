@@ -58,7 +58,8 @@ radius = 7.0
 [node name="draftslime" type="CharacterBody2D" unique_id=350030379]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1316825402]
-position = Vector2(1, -22)
+position = Vector2(2.0000038, -29.999998)
+scale = Vector2(1.671875, 1.6904762)
 sprite_frames = SubResource("SpriteFrames_7xcxn")
 autoplay = "default"
 frame_progress = 0.24158958
