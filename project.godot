@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Last Light-Survival Seige"
-run/main_scene="uid://5qm15hntx1f7"
+run/main_scene="uid://c7yfgqy5autvg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
