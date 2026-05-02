@@ -1,1 +1,11 @@
+Progress Report
+- Added collisions to trees, rocks, hills, and bushes
+- Implemented day and night system
+- Added enemy behavior (enemies chase player when nearby)
+- Implemented basic character movement
 
+To Improve:
+- Fix timing of the character’s light during nighttime
+
+Overall:
+- Game is progressing well but still needs improvements
