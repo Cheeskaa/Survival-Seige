@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3xhxrttfhuc1"]
 
-[ext_resource type="Texture2D" uid="uid://b2a1a2ncktet4" path="res://FromAssetsPack/Tinyswords/Tiny Swords (Update 010)/Effects/Fire/Fire.png" id="1_52nqi"]
+[ext_resource type="Texture2D" uid="uid://b2a1a2ncktet4" path="res://sprites/others/effects/Fire.png" id="1_52nqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqmqg"]
 atlas = ExtResource("1_52nqi")
