@@ -197,17 +197,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2fjp"]
-radius = 5.0
+radius = 7.071068
 
 [node name="FemalePlayer" type="CharacterBody2D" unique_id=79080558]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1573583039]
-position = Vector2(0, -36)
-scale = Vector2(3.5, 2.15625)
+scale = Vector2(1.088, 1)
 sprite_frames = SubResource("SpriteFrames_rdbo8")
 animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1470240852]
-position = Vector2(0, -7)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_e2fjp")

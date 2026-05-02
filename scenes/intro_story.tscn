@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://c7yfgqy5autvg"]
+
+[ext_resource type="Script" uid="uid://qxo4cafe6f52" path="res://scenes/intro_story.gd" id="1_cyg31"]
+[ext_resource type="Texture2D" uid="uid://72w4qb3s677h" path="res://sprites/OIG2.jpeg" id="2_bumqu"]
+
+[sub_resource type="Animation" id="Animation_osywk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["The sun hasn't risen in years....
+"]
+}
+
+[sub_resource type="Animation" id="Animation_cyg31"]
+resource_name = "WakeUp"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.6333333, 3.9333334, 6.366667, 8.233334, 10.8, 13.166667, 15.6, 18.033333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["The sun hasn't risen in years....
+", "
+My father was the last to see the sky blue. And then he left me...", "
+He died clutching a torch that couldn't stay lit", "They called us the 'Lighters'", "Servants to a spark that the world has forgotten.", "Now, the Eternal Dusk has found me too. I can hear them...", "Hollowed... scratching at the edge of the dark", "But I won't fail like the others. This flame is my heartbeat now."]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bumqu"]
+_data = {
+&"RESET": SubResource("Animation_osywk"),
+&"WakeUp": SubResource("Animation_cyg31")
+}
+
+[node name="IntroStory" type="Control" unique_id=2012126667]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cyg31")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1126599869]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.279
+anchor_top = -0.87600005
+offset_left = 319.40802
+offset_top = 575.648
+offset_right = 1144.0
+offset_bottom = 648.0
+texture = ExtResource("2_bumqu")
+
+[node name="TopLid" type="ColorRect" parent="." unique_id=916699426]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomLid" type="ColorRect" parent="." unique_id=1986554282]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=643228198]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -511.0
+offset_top = -136.0
+offset_right = 10921.574
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "The sun hasn't risen in years....
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1844381141]
+libraries/ = SubResource("AnimationLibrary_bumqu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1926452395]
+volume_db = 24.0
+autoplay = true

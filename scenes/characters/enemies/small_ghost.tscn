@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c7buyjcbktewp"]
+
+[ext_resource type="Texture2D" uid="uid://bmu04iruivemp" path="res://sprites/characters/enemies/SmallGhost/SpriteSheet.png" id="2_m3csu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcjk4"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64eqy"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg343"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ongk3"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8atbk"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agoqc"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thski"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7jlg"]
+atlas = ExtResource("2_m3csu")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ginao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcjk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64eqy")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg343")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ongk3")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8atbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agoqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thski")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7jlg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y41qq"]
+
+[node name="SmallGhost" type="CharacterBody2D" unique_id=1950000121]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2083310256]
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_ginao")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=867184993]
+shape = SubResource("CircleShape2D_y41qq")
