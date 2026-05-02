@@ -3,6 +3,7 @@ Progress Report
 - Implemented day and night system
 - Added enemy behavior (enemies chase player when nearby)
 - Implemented basic character movement
+- Created an intro story for the game (still in progress)
 
 To Improve:
 - Fix timing of the character’s light during nighttime
