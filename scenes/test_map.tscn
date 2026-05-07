@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://cn4kas2vd060a" path="res://scenes/characters/player/hunterPlayer.tscn" id="25_2icoj"]
 [ext_resource type="PackedScene" uid="uid://bdlyc72od0qfy" path="res://scenes/characters/enemies/giant_bamboo_boss.tscn" id="28_udium"]
 [ext_resource type="Script" uid="uid://bih1hgoln6r2a" path="res://scripts/day_and_night_cycle.gd" id="28_uv76m"]
+[ext_resource type="Script" uid="uid://cxhjw12ctufn2" path="res://scenes/canvas_layer.gd" id="29_q4233"]
+[ext_resource type="PackedScene" uid="uid://c0o2oklrqm30p" path="res://scenes/Inventory.tscn" id="29_udium"]
 [ext_resource type="PackedScene" uid="uid://db65nuqfqfgy1" path="res://scenes/characters/enemies/giant_slime.tscn" id="29_vo55k"]
 
 [sub_resource type="Animation" id="Animation_udium"]
@@ -700,3 +702,21 @@ position = Vector2(638, 184)
 [node name="GiantSlime2" parent="." unique_id=1893218069 instance=ExtResource("29_vo55k")]
 z_index = 1
 position = Vector2(454, 321)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1525498765]
+process_mode = 3
+script = ExtResource("29_q4233")
+
+[node name="Inventory" parent="CanvasLayer" unique_id=1635937929 instance=ExtResource("29_udium")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.25
+offset_top = -141.5
+offset_right = 223.25
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
