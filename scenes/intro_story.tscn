@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c7yfgqy5autvg"]
 
-[ext_resource type="Script" uid="uid://qxo4cafe6f52" path="res://scenes/intro_story.gd" id="1_cyg31"]
+[ext_resource type="Script" uid="uid://qxo4cafe6f52" path="res://scripts/intro_story.gd" id="1_cyg31"]
 [ext_resource type="Texture2D" uid="uid://72w4qb3s677h" path="res://sprites/OIG2.jpeg" id="2_bumqu"]
 
 [sub_resource type="Animation" id="Animation_osywk"]
@@ -71,8 +71,8 @@ anchor_left = -0.279
 anchor_top = -0.87600005
 offset_left = 319.40802
 offset_top = 575.648
-offset_right = 1144.0
-offset_bottom = 648.0
+offset_right = 1154.0
+offset_bottom = 1032.0
 texture = ExtResource("2_bumqu")
 
 [node name="TopLid" type="ColorRect" parent="." unique_id=916699426]

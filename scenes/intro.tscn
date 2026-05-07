@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cnsnsrqxge42s"]
+
+[ext_resource type="Texture2D" uid="uid://d24g3qtxk6gkf" path="res://sprites/Striking Logo for Delvers Studio with Game Elements.png" id="1_ioskq"]
+[ext_resource type="Script" uid="uid://bddlp3op48h71" path="res://scripts/intro.gd" id="1_yjqpq"]
+
+[sub_resource type="Animation" id="Animation_ioskq"]
+resource_name = "Fade In"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.98, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4bx60"]
+resource_name = "Fade Out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yjqpq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4bx60"]
+_data = {
+&"Fade In": SubResource("Animation_ioskq"),
+&"Fade Out": SubResource("Animation_4bx60"),
+&"RESET": SubResource("Animation_yjqpq")
+}
+
+[node name="Intro" type="Node2D" unique_id=2058031975]
+script = ExtResource("1_yjqpq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1694451175]
+position = Vector2(576, 327)
+scale = Vector2(0.577125, 0.41550002)
+texture = ExtResource("1_ioskq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=470381216]
+offset_left = -135.0
+offset_top = -138.0
+offset_right = 1261.0
+offset_bottom = 734.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1092184116]
+libraries/ = SubResource("AnimationLibrary_4bx60")
