@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://d3spb4ftgwnmy"]
+
+[ext_resource type="PackedScene" uid="uid://yudi6h653e8a" path="res://scenes/start_menu_bg.tscn" id="1_fcv5n"]
+[ext_resource type="Script" uid="uid://f1l20uxjks8i" path="res://scripts/start_menu.gd" id="1_nxjfj"]
+[ext_resource type="Texture2D" uid="uid://d284b8f5uncm5" path="res://sprites/UI - Tiny Swords/Buttons/Button_Blue_3Slides.png" id="2_4v6gu"]
+[ext_resource type="Texture2D" uid="uid://b2dkredttmwt6" path="res://sprites/UI - Tiny Swords/Buttons/Button_Blue_3Slides_Pressed.png" id="3_nxjfj"]
+[ext_resource type="Texture2D" uid="uid://1fq3epy3won0" path="res://sprites/UI - Tiny Swords/Buttons/Button_Hover_3Slides.png" id="4_u4qax"]
+[ext_resource type="FontFile" uid="uid://ba2ggtcvyvuen" path="res://sprites/fonts/PirataOne-Regular.ttf" id="5_5byqq"]
+[ext_resource type="Texture2D" uid="uid://vnlpq54a5fyt" path="res://sprites/glogo.png" id="6_4v6gu"]
+
+[node name="StartMenu" type="Control" unique_id=671392228]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nxjfj")
+
+[node name="TestMap" parent="." unique_id=803337905 instance=ExtResource("1_fcv5n")]
+position = Vector2(-359, -467)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1053709181]
+z_index = 3
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = -233.0
+offset_right = 513.0
+offset_bottom = 225.0
+grow_vertical = 2
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer" unique_id=2039050471]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_4v6gu")
+texture_pressed = ExtResource("3_nxjfj")
+texture_hover = ExtResource("4_u4qax")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/StartButton" unique_id=813614892]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("5_5byqq")
+theme_override_font_sizes/font_size = 60
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="VBoxContainer" unique_id=2101570083]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_4v6gu")
+texture_pressed = ExtResource("3_nxjfj")
+texture_hover = ExtResource("4_u4qax")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Options" unique_id=1052186494]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("5_5byqq")
+theme_override_font_sizes/font_size = 60
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="VBoxContainer" unique_id=1857847870]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_4v6gu")
+texture_pressed = ExtResource("3_nxjfj")
+texture_hover = ExtResource("4_u4qax")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Exit" unique_id=975063169]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("5_5byqq")
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=352300822]
+z_index = 3
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_4v6gu")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cdfgfga86ass"]
+
+[ext_resource type="Script" uid="uid://cp2rjf8rfu08s" path="res://scripts/introvid.gd" id="1_y5if3"]
+[ext_resource type="VideoStream" uid="uid://csok22oie8ugc" path="res://sprites/introvid.ogv" id="2_y5if3"]
+
+[node name="Introvid" type="Node2D" unique_id=373129013]
+script = ExtResource("1_y5if3")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=2031189815]
+offset_left = -90.0
+offset_top = -57.0
+offset_right = 1242.0
+offset_bottom = 709.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+stream = ExtResource("2_y5if3")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1127772082]
+position = Vector2(575, 318)
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
