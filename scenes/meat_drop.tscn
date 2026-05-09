@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://j7cw5q78bne1"]
+
+[ext_resource type="Script" uid="uid://db02rg7shbom3" path="res://scripts/meat_drop.gd" id="1_3gcam"]
+[ext_resource type="Texture2D" uid="uid://dvgcjer000vho" path="res://sprites/materials/Meat/Meat Resource/Meat Resource.png" id="1_qrcl5"]
+[ext_resource type="AudioStream" uid="uid://dmxmold8iik1w" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Bonus/PowerUp1.wav" id="3_wcf2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gcam"]
+radius = 28.01785
+
+[node name="MeatDrop" type="Area2D" unique_id=322165057]
+script = ExtResource("1_3gcam")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=511530692]
+texture = ExtResource("1_qrcl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=736873928]
+shape = SubResource("CircleShape2D_3gcam")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=476541788]
+stream = ExtResource("3_wcf2v")

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cp2rjf8rfu08s" path="res://scripts/introvid.gd" id="1_y5if3"]
 [ext_resource type="VideoStream" uid="uid://csok22oie8ugc" path="res://sprites/introvid.ogv" id="2_y5if3"]
 [ext_resource type="FontFile" uid="uid://dedmx854flksl" path="res://sprites/Ui-NinjaAdventure/Font/NormalFont.ttf" id="3_avjcw"]
-[ext_resource type="AudioStream" uid="uid://7kq4yywmuuht" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Musics/13 - Mystical.ogg" id="4_p3viu"]
 
 [node name="Introvid" type="Node2D" unique_id=373129013]
 script = ExtResource("1_y5if3")
@@ -37,8 +36,5 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_avjcw")
 text = "SKIP>"
-
-[node name="background" type="AudioStreamPlayer2D" parent="." unique_id=432556063]
-stream = ExtResource("4_p3viu")
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
