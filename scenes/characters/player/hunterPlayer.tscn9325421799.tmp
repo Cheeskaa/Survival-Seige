@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cudpyvpal01tm" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Item.png" id="5_dfvkj"]
 [ext_resource type="Texture2D" uid="uid://bmbglei6wlby3" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Walk.png" id="6_g705u"]
 [ext_resource type="AudioStream" uid="uid://5q8ug1ukmn1u" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Hit8.wav" id="7_3atuh"]
-[ext_resource type="AudioStream" uid="uid://co63pmbocicw7" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Alert/Alert3.wav" id="8_mp8qg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klooa"]
 atlas = ExtResource("2_cv7tw")
@@ -256,6 +255,3 @@ shape = SubResource("CircleShape2D_mm7y1")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1376084575]
 stream = ExtResource("7_3atuh")
-
-[node name="FlashlightSound" type="AudioStreamPlayer2D" parent="." unique_id=690683750]
-stream = ExtResource("8_mp8qg")
