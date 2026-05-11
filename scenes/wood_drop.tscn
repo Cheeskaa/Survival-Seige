@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://btvpagtpthhrj"]
+
+[ext_resource type="Texture2D" uid="uid://dmk563mw8y8s5" path="res://sprites/materials/Wood Resource.png" id="1_h8whh"]
+[ext_resource type="Script" uid="uid://bqchpuw41v1at" path="res://scripts/wood_drop.gd" id="1_xym4r"]
+[ext_resource type="AudioStream" uid="uid://dmxmold8iik1w" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Bonus/PowerUp1.wav" id="3_2p08e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xym4r"]
+radius = 12.164788
+height = 34.518078
+
+[node name="WoodDrop" type="Area2D" unique_id=626707436]
+script = ExtResource("1_xym4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2060430992]
+z_index = 3
+texture = ExtResource("1_h8whh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1675216187]
+rotation = 1.4166511
+shape = SubResource("CapsuleShape2D_xym4r")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=2135628269]
+stream = ExtResource("3_2p08e")

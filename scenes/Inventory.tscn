@@ -39,6 +39,7 @@ columns = 5
 [node name="InventorySlot" parent="NinePatchRect/GridContainer" unique_id=703009766 instance=ExtResource("2_elp5n")]
 layout_mode = 2
 
+<<<<<<< Updated upstream
 [node name="InventorySlot2" parent="NinePatchRect/GridContainer" unique_id=1343588236 instance=ExtResource("2_elp5n")]
 layout_mode = 2
 
@@ -80,3 +81,541 @@ layout_mode = 2
 
 [node name="InventorySlot15" parent="NinePatchRect/GridContainer" unique_id=1356240198 instance=ExtResource("2_elp5n")]
 layout_mode = 2
+=======
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot" unique_id=922409069]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot" unique_id=1547271281]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot2" parent="NinePatchRect/GridContainer" unique_id=1343588236 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot2" unique_id=138925129]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot2" unique_id=496145896]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot3" parent="NinePatchRect/GridContainer" unique_id=691244320 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot3" unique_id=990975312]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot3" unique_id=1496685058]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot4" parent="NinePatchRect/GridContainer" unique_id=698139517 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot4" unique_id=1456752539]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot4" unique_id=1274347497]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot5" parent="NinePatchRect/GridContainer" unique_id=1830461635 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot5" unique_id=57898122]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot5" unique_id=1476192482]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot6" parent="NinePatchRect/GridContainer" unique_id=1066893593 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot6" unique_id=33833334]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot6" unique_id=929243916]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot7" parent="NinePatchRect/GridContainer" unique_id=517242370 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot7" unique_id=1566848824]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot7" unique_id=1453329539]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot8" parent="NinePatchRect/GridContainer" unique_id=892163897 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot8" unique_id=875147207]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot8" unique_id=450816704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot9" parent="NinePatchRect/GridContainer" unique_id=553787442 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot9" unique_id=442666436]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot9" unique_id=1650820932]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot10" parent="NinePatchRect/GridContainer" unique_id=1137031753 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot10" unique_id=154437753]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot10" unique_id=2006834797]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot11" parent="NinePatchRect/GridContainer" unique_id=98500800 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot11" unique_id=1018790706]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot11" unique_id=866352884]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot12" parent="NinePatchRect/GridContainer" unique_id=1592988664 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot12" unique_id=33003469]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot12" unique_id=503169235]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot13" parent="NinePatchRect/GridContainer" unique_id=557498818 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot13" unique_id=154380014]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot13" unique_id=196810706]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot14" parent="NinePatchRect/GridContainer" unique_id=218621758 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot14" unique_id=70946250]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot14" unique_id=515560160]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlot15" parent="NinePatchRect/GridContainer" unique_id=1356240198 instance=ExtResource("2_elp5n")]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot15" unique_id=1693393801]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -25.5
+offset_right = -8.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="NinePatchRect/GridContainer/InventorySlot15" unique_id=707471951]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+>>>>>>> Stashed changes

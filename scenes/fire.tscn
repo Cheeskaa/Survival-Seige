@@ -1,34 +1,30 @@
 [gd_scene format=3 uid="uid://d3xhxrttfhuc1"]
 
-[ext_resource type="Texture2D" uid="uid://b2a1a2ncktet4" path="res://sprites/others/effects/Fire.png" id="1_52nqi"]
+[ext_resource type="Texture2D" uid="uid://dfw7xmdj5682v" path="res://sprites/others/campfire-Sheet.png" id="1_52nqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqmqg"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(0, 0, 128, 128)
+region = Rect2(0, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5mbl"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(128, 0, 128, 128)
+region = Rect2(36, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rach5"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(256, 0, 128, 128)
+region = Rect2(72, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txieb"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(384, 0, 128, 128)
+region = Rect2(108, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4l61p"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(512, 0, 128, 128)
+region = Rect2(144, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10wrr"]
 atlas = ExtResource("1_52nqi")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_theev"]
-atlas = ExtResource("1_52nqi")
-region = Rect2(768, 0, 128, 128)
+region = Rect2(180, 0, 36, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3l77w"]
 animations = [{
@@ -50,12 +46,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_10wrr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_theev")
 }],
 "loop": true,
-"name": &"default",
+"name": &"fire",
 "speed": 5.0
 }]
 
@@ -65,10 +58,12 @@ radius = 22.022715
 [node name="Fire" type="CharacterBody2D" unique_id=1309779548]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=614141029]
-position = Vector2(-1, -44)
+position = Vector2(-1, -25)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3l77w")
-autoplay = "default"
+animation = &"fire"
+autoplay = "fire"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1644039727]
-position = Vector2(-4, -26)
+position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_ajlmw")
