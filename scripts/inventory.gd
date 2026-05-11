@@ -1,29 +1,27 @@
-extends Control
+extends Node
 
-@onready var grid = $NinePatchRect/GridContainer
+@onready var video_player: VideoStreamPlayer = $VideoStreamPlayer
+@onready var skip_button: Button = $CanvasLayer/Button
+# Renamed for clarity:
+@onready var background_music: AudioStreamPlayer2D = $background 
 
-var icon_map = {
-	"Raw Meat": preload("res://sprites/materials/Meat/Meat Resource/Meat Resource.png"),
-	"Wood": preload("res://sprites/materials/Wood Resource.png")
-}
-
-func update_slots(items: Dictionary) -> void:
-	if not grid: return
+func _ready() -> void:
+	skip_button.pressed.connect(_on_skip_pressed)
+	video_player.finished.connect(_on_video_finished)
 	
-	var slots = grid.get_children() 
-	var item_names = items.keys()
+	# Start the music when the cutscene starts
+	if background_music:
+		background_music.play()
 
-	for i in range(slots.size()):
-		var slot = slots[i]
+func _on_skip_pressed() -> void:
+	_go_to_next_scene()
+
+func _on_video_finished() -> void:
+	_go_to_next_scene()
+
+func _go_to_next_scene() -> void:
+	# Stop the music before leaving the scene (optional but good practice)
+	if background_music:
+		background_music.stop()
 		
-		if i < item_names.size():
-			var i_name = item_names[i]
-			var i_count = items[i_name]
-			var i_tex = icon_map.get(i_name)
-			
-			if slot.has_method("set_slot_data"):
-				slot.set_slot_data(i_name, i_count, i_tex)
-		else:
-			# Clear empty slots
-			if slot.has_method("set_slot_data"):
-				slot.set_slot_data("", 0, null)
+	get_tree().change_scene_to_file("res://scenes/test_map.tscn")
