@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c0o2oklrqm30p"]
 
+[ext_resource type="Script" uid="uid://c2voyr06q6csq" path="res://scripts/inventory.gd" id="1_brmsw"]
 [ext_resource type="Texture2D" uid="uid://dvswpnnm6co1" path="res://sprites/inventory/InventoryRect.png" id="1_kh8if"]
 [ext_resource type="PackedScene" uid="uid://cxm8wf8ok8b1c" path="res://scenes/InventorySlot.tscn" id="2_elp5n"]
 
@@ -8,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 448.0
 offset_bottom = 284.0
+script = ExtResource("1_brmsw")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=445043900]
 layout_mode = 0
@@ -39,49 +41,6 @@ columns = 5
 [node name="InventorySlot" parent="NinePatchRect/GridContainer" unique_id=703009766 instance=ExtResource("2_elp5n")]
 layout_mode = 2
 
-<<<<<<< Updated upstream
-[node name="InventorySlot2" parent="NinePatchRect/GridContainer" unique_id=1343588236 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot3" parent="NinePatchRect/GridContainer" unique_id=691244320 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="NinePatchRect/GridContainer" unique_id=698139517 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot5" parent="NinePatchRect/GridContainer" unique_id=1830461635 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="NinePatchRect/GridContainer" unique_id=1066893593 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot7" parent="NinePatchRect/GridContainer" unique_id=517242370 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot8" parent="NinePatchRect/GridContainer" unique_id=892163897 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot9" parent="NinePatchRect/GridContainer" unique_id=553787442 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot10" parent="NinePatchRect/GridContainer" unique_id=1137031753 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot11" parent="NinePatchRect/GridContainer" unique_id=98500800 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot12" parent="NinePatchRect/GridContainer" unique_id=1592988664 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot13" parent="NinePatchRect/GridContainer" unique_id=557498818 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot14" parent="NinePatchRect/GridContainer" unique_id=218621758 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-
-[node name="InventorySlot15" parent="NinePatchRect/GridContainer" unique_id=1356240198 instance=ExtResource("2_elp5n")]
-layout_mode = 2
-=======
 [node name="CountLabel" type="Label" parent="NinePatchRect/GridContainer/InventorySlot" unique_id=922409069]
 layout_mode = 1
 anchors_preset = 3
@@ -618,4 +577,3 @@ grow_vertical = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
->>>>>>> Stashed changes
