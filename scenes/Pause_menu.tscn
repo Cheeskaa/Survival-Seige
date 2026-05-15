@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b2dkredttmwt6" path="res://sprites/UI - Tiny Swords/Buttons/Button_Blue_3Slides_Pressed.png" id="3_tcpin"]
 [ext_resource type="Texture2D" uid="uid://1fq3epy3won0" path="res://sprites/UI - Tiny Swords/Buttons/Button_Hover_3Slides.png" id="4_12n0p"]
 [ext_resource type="FontFile" uid="uid://ba2ggtcvyvuen" path="res://sprites/fonts/PirataOne-Regular.ttf" id="5_jem5p"]
+[ext_resource type="Script" uid="uid://f03tfs51lodb" path="res://scenes/options.gd" id="7_mw32d"]
+[ext_resource type="Texture2D" uid="uid://bh2tbnul08bt8" path="res://sprites/volume/SpeakerOn.png" id="8_u778j"]
+[ext_resource type="Texture2D" uid="uid://okm80fhgahre" path="res://sprites/volume/SpeakerMute.png" id="9_2j5bk"]
 
 [node name="PauseMenu" type="Control" unique_id=791859205]
 layout_mode = 3
@@ -72,6 +75,7 @@ texture_normal = ExtResource("2_eaeuq")
 texture_pressed = ExtResource("3_tcpin")
 texture_hover = ExtResource("4_12n0p")
 stretch_mode = 0
+script = ExtResource("7_mw32d")
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/Options" unique_id=657094555]
 layout_mode = 1
@@ -88,6 +92,20 @@ theme_override_font_sizes/font_size = 42
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VolumeSettings" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/Options" unique_id=1302145651]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VolumeOn" type="TextureButton" parent="NinePatchRect/VBoxContainer/Options/VolumeSettings" unique_id=2018405305]
+layout_mode = 2
+texture_normal = ExtResource("8_u778j")
+
+[node name="VolumeMute" type="TextureButton" parent="NinePatchRect/VBoxContainer/Options/VolumeSettings" unique_id=1981823480]
+layout_mode = 2
+texture_normal = ExtResource("9_2j5bk")
 
 [node name="ExitButton" type="TextureButton" parent="NinePatchRect/VBoxContainer" unique_id=1991244537]
 custom_minimum_size = Vector2(250, 100)
@@ -113,3 +131,6 @@ theme_override_font_sizes/font_size = 42
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Options/VolumeSettings/VolumeOn" to="." method="_on_volume_on_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Options/VolumeSettings/VolumeMute" to="." method="_on_volume_mute_pressed"]
