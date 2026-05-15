@@ -5,7 +5,13 @@ extends Control
 
 var icon_map = {
 	"Raw Meat": preload("res://sprites/materials/Meat/Meat Resource/Meat Resource.png"),
-	"Wood": preload("res://sprites/materials/Wood Resource.png")
+	"Wood": preload("res://sprites/materials/Wood Resource.png"),
+	"BigSword": preload("res://sprites/materials/Items/Weapons/BigSword/Sprite.png"),
+	"Lance": preload("res://sprites/materials/Items/Weapons/Lance/Sprite.png"),
+	"Stick": preload("res://sprites/materials/Items/Weapons/Stick/Sprite.png"),
+	"AxeTool": preload("res://sprites/materials/Items/Weapons/AxeTool/Sprite.png"),
+	"Bow": preload("res://sprites/materials/Items/Weapons/Bow/Sprite.png"),
+	"MagicWand": preload("res://sprites/materials/Items/Weapons/MagicWand/Sprite.png"),
 }
 
 func update_slots(items: Dictionary) -> void:

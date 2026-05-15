@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cy3ada0q4li4v"]
+
+[ext_resource type="Script" uid="uid://b783wq005vxt7" path="res://scripts/magic_projectile.gd" id="1_a6wpt"]
+[ext_resource type="Texture2D" uid="uid://bo4am8xdll6s4" path="res://sprites/FX-NinjaAdventure/Magic/Circle/SpriteSheetOrange.png" id="2_a0yfi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqg8x"]
+atlas = ExtResource("2_a0yfi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ewpi"]
+atlas = ExtResource("2_a0yfi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c04l"]
+atlas = ExtResource("2_a0yfi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ybvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqg8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ewpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c04l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg08x"]
+radius = 14.0
+
+[node name="MagicProjectile" type="Node2D" unique_id=625357044]
+
+[node name="MagicProjectile" type="Area2D" parent="." unique_id=1805877669]
+script = ExtResource("1_a6wpt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MagicProjectile" unique_id=2105174336]
+sprite_frames = SubResource("SpriteFrames_2ybvy")
+frame = 2
+frame_progress = 0.36019635
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagicProjectile" unique_id=486212389]
+shape = SubResource("CircleShape2D_eg08x")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dbscicj0gyvtl"]
+
+[ext_resource type="Script" uid="uid://dexcjdvrg6krh" path="res://scripts/weapon_bow.gd" id="1_prjx1"]
+[ext_resource type="Texture2D" uid="uid://fab3ep4ltnd6" path="res://sprites/materials/Items/Weapons/Bow/Sprite.png" id="2_rivji"]
+
+[node name="Bow" type="Node2D" unique_id=960236037]
+script = ExtResource("1_prjx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2032176726]
+position = Vector2(0, 18)
+texture = ExtResource("2_rivji")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dn1j86b55c5gf"]
+
+[ext_resource type="Script" uid="uid://bhe224qwcjfvh" path="res://scripts/weapon_lance.gd" id="1_6jqds"]
+[ext_resource type="Texture2D" uid="uid://b15be2h43npls" path="res://sprites/materials/Items/Weapons/Lance/SpriteInHand.png" id="1_881s2"]
+
+[node name="Lance" type="Node2D" unique_id=1276884905]
+script = ExtResource("1_6jqds")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134686450]
+position = Vector2(16, 0)
+texture = ExtResource("1_881s2")

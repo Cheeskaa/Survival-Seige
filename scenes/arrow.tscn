@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://0an4a6dimqf6"]
+
+[ext_resource type="Script" uid="uid://dp6sskl1vkkgs" path="res://scripts/arrow.gd" id="1_23jat"]
+[ext_resource type="Texture2D" uid="uid://losurm6pydh" path="res://sprites/materials/Items/Weapons/Bow/Arrow.png" id="2_q8ifc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23jat"]
+radius = 1.0
+height = 12.0
+
+[node name="Arrow" type="Area2D" unique_id=1888295791]
+script = ExtResource("1_23jat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1157589515]
+scale = Vector2(2, 2)
+texture = ExtResource("2_q8ifc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=384900725]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_23jat")

@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://5q8ug1ukmn1u" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Hit8.wav" id="7_3atuh"]
 [ext_resource type="Script" uid="uid://dsjfxyo18uuxe" path="res://scripts/attack_hitbox.gd" id="7_dfcsm"]
 [ext_resource type="AudioStream" uid="uid://co63pmbocicw7" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Alert/Alert3.wav" id="8_mp8qg"]
+[ext_resource type="Script" uid="uid://b0jb5bu74d0vi" path="res://scripts/weapon_manager.gd" id="11_kgwrr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klooa"]
 atlas = ExtResource("2_cv7tw")
@@ -285,5 +286,8 @@ stream = ExtResource("8_mp8qg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=37784392]
 position = Vector2(2.9802322e-08, 1.4285715)
 shape = SubResource("CircleShape2D_dfcsm")
+
+[node name="WeaponManager" type="Node2D" parent="." unique_id=348171208]
+script = ExtResource("11_kgwrr")
 
 [connection signal="body_entered" from="AttackHitbox" to="AttackHitbox" method="_on_body_entered"]
