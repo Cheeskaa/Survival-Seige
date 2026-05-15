@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var wood_scene = preload("res://scenes/wood_drop.tscn")
 @onready var tilemap: TileMapLayer = get_parent().get_node("props")
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var weapon_manager: Node2D = $WeaponManager
 
 @export var speed: float = 400.0
 @export var tree_respawn_time: float = 30.0
@@ -23,6 +24,9 @@ var cycle
 var last_direction: String = "down"
 var knockback_velocity: Vector2 = Vector2.ZERO
 var is_hurt: bool = false
+# Add with other vars
+var hotbar_items: Array = []  # tracks what's in hotbar slots
+var selected_slot: int = 0
 
 var inventory: Dictionary = {}
 signal inventory_changed(new_inventory: Dictionary)
@@ -36,6 +40,22 @@ func _ready() -> void:
 	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	await get_tree().process_frame
 	cycle = get_tree().get_first_node_in_group("day_night_cycle")
+	if cycle == null:
+		print("ERROR: day_night_cycle not found!")
+		return
+	cycle.change_day_time.connect(_on_day_time_changed)
+	# Sync immediately with current state
+	_on_day_time_changed(cycle.current_state)
+	inventory["BigSword"] = 1
+	inventory["Bow"] = 1
+	inventory["AxeTool"] = 1
+	weapon_manager.equip_weapon("BigSword")
+
+func _on_day_time_changed(state) -> void:
+	if state == cycle.DAY_STATE.NIGHT:
+		point_light_2d.enabled = true
+	else:
+		point_light_2d.enabled = false
 
 func sync_ui_to_inventory(new_ui_data: Dictionary):
 	inventory = new_ui_data
@@ -43,6 +63,13 @@ func sync_ui_to_inventory(new_ui_data: Dictionary):
 
 func _physics_process(_delta: float) -> void:
 	if is_dead: return
+
+# Hold left click to keep attacking
+	if Input.is_action_pressed("attack"):
+		if weapon_manager.current_weapon != null:
+			weapon_manager.attack()
+		else:
+			attack()
 
 	if knockback_velocity != Vector2.ZERO:
 		velocity = knockback_velocity
@@ -70,8 +97,28 @@ func _physics_process(_delta: float) -> void:
 	_update_animation(direction)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack"): attack()
-	if event.is_action_pressed("toggle_light"): toggle_flashlight()
+	# Number keys to switch slots
+	for i in range(1, 6):
+		if event.is_action_pressed("slot_" + str(i)):
+			_select_slot(i - 1)
+	
+	# Left click to attack
+	if event.is_action_pressed("attack"):
+		if weapon_manager.current_weapon != null:
+			weapon_manager.attack()
+		else:
+			attack()  # use default attack if no weapon
+
+func _select_slot(index: int) -> void:
+	selected_slot = index
+	# Get item in this slot
+	var items = inventory.keys()
+	if index < items.size():
+		var item = items[index]
+		weapon_manager.equip_weapon(item)
+	else:
+		weapon_manager.unequip()
+	inventory_changed.emit(inventory)
 
 func toggle_flashlight() -> void:
 	if point_light_2d:
@@ -139,6 +186,32 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		var knockback_dir = (global_position - area.get_parent().global_position).normalized()
 		knockback_velocity = knockback_dir * 300.0
 
+# Update _check_for_trees for axe bonus
+func _check_for_trees_with_axe(hits_required: int) -> void:
+	if not tilemap: return
+	var reach = 40.0
+	var offset = Vector2.ZERO
+	if last_direction == "down": offset.y = reach
+	elif last_direction == "up": offset.y = -reach
+	elif last_direction == "right": offset.x = reach
+	elif last_direction == "left": offset.x = -reach
+	var target_pos = global_position + offset
+	var map_pos = tilemap.local_to_map(tilemap.to_local(target_pos))
+	if tilemap.get_cell_source_id(map_pos) == 28:
+		_damage_tree_with_hits(map_pos, hits_required)
+
+func _damage_tree_with_hits(pos: Vector2i, hits_required: int) -> void:
+	if not tree_health.has(pos):
+		tree_health[pos] = hits_required
+	tree_health[pos] -= 1
+	if tree_health[pos] <= 0:
+		tilemap.set_cell(pos, -1)
+		tree_health.erase(pos)
+		var wood = wood_scene.instantiate()
+		get_parent().add_child(wood)
+		wood.global_position = tilemap.to_global(tilemap.map_to_local(pos))
+		_respawn_tree(pos)
+
 func _check_for_trees():
 	if not tilemap: return
 	var reach = 40.0
@@ -153,7 +226,8 @@ func _check_for_trees():
 		_damage_tree(map_pos)
 
 func _damage_tree(pos: Vector2i):
-	if not tree_health.has(pos): tree_health[pos] = 3
+	if not tree_health.has(pos): 
+		tree_health[pos] = 5  # default 5 hits
 	tree_health[pos] -= 1
 	if tree_health[pos] <= 0:
 		tilemap.set_cell(pos, -1)

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bh6e0w6em73r1"]
+
+[ext_resource type="Script" uid="uid://yvcpd7w4nhsp" path="res://scripts/weapon_bigsword.gd" id="1_148c7"]
+[ext_resource type="Texture2D" uid="uid://bxstchyknapx" path="res://sprites/materials/Items/Weapons/BigSword/Sprite.png" id="2_148c7"]
+
+[node name="BigSword" type="Node2D" unique_id=2093304124]
+script = ExtResource("1_148c7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1229904559]
+position = Vector2(17.999998, 10)
+rotation = 1.6685348
+texture = ExtResource("2_148c7")
