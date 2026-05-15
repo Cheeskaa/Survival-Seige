@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://pmiq6tjq3d3"]
 
+[ext_resource type="Script" uid="uid://jhcamm6jr5ki" path="res://scripts/small_slime.gd" id="1_q53m7"]
 [ext_resource type="Texture2D" uid="uid://cl34g12fmn6wx" path="res://sprites/characters/enemies/SmallSlime/Slime.png" id="1_wsqng"]
 [ext_resource type="Texture2D" uid="uid://bqtksmdxdr13i" path="res://sprites/characters/enemies/SmallSlime/Slime2.png" id="2_q53m7"]
 
@@ -78,9 +79,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wsqng"]
-radius = 4.0
+radius = 3.5714283
 
-[node name="SmallSlime" type="CharacterBody2D" unique_id=1516032001]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q53m7"]
+size = Vector2(20, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onlgh"]
+size = Vector2(20, 11)
+
+[node name="SmallSlime" type="CharacterBody2D" unique_id=1516032001 groups=["enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 3
+script = ExtResource("1_q53m7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=803737609]
 scale = Vector2(1.4, 1.4)
@@ -89,6 +99,19 @@ animation = &"idle_walk"
 autoplay = "idle_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1927950311]
-position = Vector2(0, 2)
+position = Vector2(0, 4)
 scale = Vector2(1.4, 1.4)
 shape = SubResource("CircleShape2D_wsqng")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1356268084 groups=["enemy_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=492736683]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_q53m7")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1449820624 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1238723250]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_onlgh")

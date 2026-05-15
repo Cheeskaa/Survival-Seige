@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://db65nuqfqfgy1"]
 
-[ext_resource type="Script" uid="uid://rkh0j3ktnqat" path="res://scenes/characters/enemies/giant_slime.gd" id="1_58myo"]
+[ext_resource type="Script" uid="uid://rkh0j3ktnqat" path="res://scripts/giant_slime.gd" id="1_58myo"]
 [ext_resource type="Texture2D" uid="uid://d2q8cph1wdf4y" path="res://sprites/characters/enemies/GiantSlime/Hit.png" id="1_rva0k"]
 [ext_resource type="Texture2D" uid="uid://3e2uallupkmn" path="res://sprites/characters/enemies/GiantSlime/Idle.png" id="2_58myo"]
 [ext_resource type="Texture2D" uid="uid://c1m4hk735wg5p" path="res://sprites/characters/enemies/GiantSlime/Jump.png" id="3_cybxt"]
@@ -227,15 +227,36 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0qgn"]
 radius = 21.213203
 
-[node name="GiantSlime" type="CharacterBody2D" unique_id=946111300]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58myo"]
+size = Vector2(77, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cybxt"]
+size = Vector2(77, 41)
+
+[node name="GiantSlime" type="CharacterBody2D" unique_id=946111300 groups=["enemy"]]
+collision_layer = 3
 script = ExtResource("1_58myo")
+health_bar_scale = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=929896703]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ghtvj")
-animation = &"idle"
+animation = &"hit"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=744026914]
 position = Vector2(1, 18)
 shape = SubResource("CircleShape2D_b0qgn")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1020280909 groups=["enemy_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1406750305]
+position = Vector2(0.5, 18.5)
+shape = SubResource("RectangleShape2D_58myo")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1505449849 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=528990087]
+position = Vector2(0.5, 19.5)
+shape = SubResource("RectangleShape2D_cybxt")

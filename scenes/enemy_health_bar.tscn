@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dfbictxbgcyic"]
+
+[ext_resource type="Script" uid="uid://wkqedyqp315j" path="res://scripts/enemy_health_bar.gd" id="1_hm7mj"]
+[ext_resource type="Texture2D" uid="uid://061b3v88x3ob" path="res://sprites/Ui-NinjaAdventure/Receptacle/LifeBarMiniUnder.png" id="2_fa85u"]
+[ext_resource type="Texture2D" uid="uid://b76vh2wv1u76h" path="res://sprites/Ui-NinjaAdventure/Receptacle/LifeBarMiniProgress.png" id="3_k5ul3"]
+
+[node name="EnemyHealthBar" type="Node2D" unique_id=54047357]
+script = ExtResource("1_hm7mj")
+
+[node name="Progress" type="TextureProgressBar" parent="." unique_id=579057687]
+offset_left = -9.0
+offset_top = -2.0
+offset_right = 31.0
+offset_bottom = 38.0
+value = 100.0
+texture_under = ExtResource("2_fa85u")
+texture_progress = ExtResource("3_k5ul3")

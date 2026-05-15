@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c7buyjcbktewp"]
 
+[ext_resource type="Script" uid="uid://bujq2xvm8ryp7" path="res://scripts/small_ghost.gd" id="1_su2qk"]
 [ext_resource type="Texture2D" uid="uid://bmu04iruivemp" path="res://sprites/characters/enemies/SmallGhost/SpriteSheet.png" id="2_m3csu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vcjk4"]
@@ -43,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_64eqy")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -77,14 +78,38 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y41qq"]
+radius = 7.0
 
-[node name="SmallGhost" type="CharacterBody2D" unique_id=1950000121]
+[sub_resource type="CircleShape2D" id="CircleShape2D_su2qk"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3csu"]
+radius = 11.0
+
+[node name="SmallGhost" type="CharacterBody2D" unique_id=1950000121 groups=["enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 3
+script = ExtResource("1_su2qk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2083310256]
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_ginao")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=867184993]
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_y41qq")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=2137642616 groups=["enemy_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=426496324]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_su2qk")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=889397581 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1455835818]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_m3csu")

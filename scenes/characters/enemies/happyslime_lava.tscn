@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://240q0swhgpe6"]
 
+[ext_resource type="Script" uid="uid://wb0rdhikcd8t" path="res://scripts/happyslime_lava.gd" id="1_it56m"]
 [ext_resource type="Texture2D" uid="uid://bewtrn613ybo4" path="res://sprites/characters/enemies/Slimes/PNG/Slime3/With_shadow/Slime3_Attack_with_shadow.png" id="1_waqm3"]
 [ext_resource type="Texture2D" uid="uid://byicta40wk58m" path="res://sprites/characters/enemies/Slimes/PNG/Slime3/With_shadow/Slime3_Death_with_shadow.png" id="2_it56m"]
 [ext_resource type="Texture2D" uid="uid://cv8cvrskrrsuq" path="res://sprites/characters/enemies/Slimes/PNG/Slime3/With_shadow/Slime3_Hurt_with_shadow.png" id="3_8jr1m"]
@@ -245,7 +246,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8fr17")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 10.0
 }, {
@@ -349,19 +350,38 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_waqm3"]
-radius = 6.874999
+radius = 5.1538815
 
-[node name="happyslimeLava" type="CharacterBody2D" unique_id=1734586594]
-scale = Vector2(1.6, 1.6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_it56m"]
+radius = 8.149002
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jr1m"]
+radius = 8.149002
+
+[node name="happyslimeLava" type="CharacterBody2D" unique_id=1734586594 groups=["enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 3
+script = ExtResource("1_it56m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144060559]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_ed88j")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.07175711
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1562913922]
-position = Vector2(0.62499994, -1.8749998)
+position = Vector2(0.625, -1.1920929e-07)
 shape = SubResource("CircleShape2D_waqm3")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=810863162 groups=["enemy_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1990593043]
+position = Vector2(1.1920929e-07, -2.5)
+shape = SubResource("CircleShape2D_it56m")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1466258657 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1673659548]
+position = Vector2(0, -2.4999998)
+shape = SubResource("CircleShape2D_8jr1m")

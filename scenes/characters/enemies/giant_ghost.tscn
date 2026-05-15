@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bi6p6ufvqo2p6"]
 
+[ext_resource type="Script" uid="uid://c2gk7nd5urkjh" path="res://scripts/giant_ghost.gd" id="1_bovgv"]
 [ext_resource type="Texture2D" uid="uid://lnlqvvx4lkgg" path="res://sprites/characters/enemies/GiantSpirit/Hit.png" id="1_srym0"]
 [ext_resource type="Texture2D" uid="uid://bhatqu1oss630" path="res://sprites/characters/enemies/GiantSpirit/Idle.png" id="2_bovgv"]
 
@@ -94,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uay4q")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -134,18 +135,40 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrbpe"]
-radius = 16.03122
+radius = 12.509996
 
-[node name="GiantGhost" type="CharacterBody2D" unique_id=255086737]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bovgv"]
+radius = 34.0147
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rpla"]
+radius = 33.06055
+
+[node name="GiantGhost" type="CharacterBody2D" unique_id=255086737 groups=["enemy"]]
+collision_layer = 3
+script = ExtResource("1_bovgv")
+health_bar_scale = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=278652060]
 position = Vector2(0, -2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_1m3i0")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1498121841]
-position = Vector2(1, 8)
+position = Vector2(-1, 15)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_vrbpe")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1811103153 groups=["enemy_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=2130755974]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_bovgv")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=535156753 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=732991259]
+position = Vector2(-1, 7)
+shape = SubResource("CircleShape2D_0rpla")
