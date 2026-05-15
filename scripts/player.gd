@@ -1,22 +1,29 @@
 extends CharacterBody2D
 
+@onready var player_health_ui: Node2D = $"../CanvasLayer/PlayerHealthUI"
+
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var attack_hitbox: Area2D = $AttackHitbox
 @onready var attack_sound: AudioStreamPlayer2D = $AttackSound
 @onready var flashlight_sound: AudioStreamPlayer2D = $FlashlightSound
 @onready var wood_scene = preload("res://scenes/wood_drop.tscn")
-@onready var tilemap: TileMapLayer = get_parent().get_node("props") 
+@onready var tilemap: TileMapLayer = get_parent().get_node("props")
+@onready var hurtbox: Area2D = $Hurtbox
 
 @export var speed: float = 400.0
-@export var tree_respawn_time: float = 30.0 
+@export var tree_respawn_time: float = 30.0
+@export var attack_damage: float = 10.0
+@export var max_health: float = 100.0  # 5 hearts x 4 HP each = 20 total
 
-var tree_health: Dictionary = {} 
+var health: float = 100.0
+var tree_health: Dictionary = {}
 var is_dead: bool = false
 var is_attacking: bool = false
 var cycle
 var last_direction: String = "down"
+var knockback_velocity: Vector2 = Vector2.ZERO
+var is_hurt: bool = false
 
-# This holds our items
 var inventory: Dictionary = {}
 signal inventory_changed(new_inventory: Dictionary)
 
@@ -24,19 +31,27 @@ func _ready() -> void:
 	add_to_group("player")
 	if point_light_2d:
 		point_light_2d.enabled = false
-		point_light_2d.energy = 1.0 
+		point_light_2d.energy = 1.0
 	attack_hitbox.monitoring = false
+	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	await get_tree().process_frame
 	cycle = get_tree().get_first_node_in_group("day_night_cycle")
 
-# NEW: This allows the UI slots to tell the player "I moved an item"
 func sync_ui_to_inventory(new_ui_data: Dictionary):
 	inventory = new_ui_data
-	# Tell ALL UI (Hotbar and Inventory) to refresh based on the new data
 	inventory_changed.emit(inventory)
 
 func _physics_process(_delta: float) -> void:
 	if is_dead: return
+
+	if knockback_velocity != Vector2.ZERO:
+		velocity = knockback_velocity
+		knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 0.2)
+		if knockback_velocity.length() < 5:
+			knockback_velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
 	if is_attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -47,7 +62,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("walk_left"): direction.x -= 1
 	if Input.is_action_pressed("walk_down"): direction.y += 1
 	if Input.is_action_pressed("walk_up"): direction.y -= 1
-	
+
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
 	velocity = direction * speed
@@ -83,7 +98,7 @@ func attack() -> void:
 	if is_dead or is_attacking: return
 	is_attacking = true
 	if attack_sound:
-		attack_sound.pitch_scale = randf_range(0.9, 1.1) 
+		attack_sound.pitch_scale = randf_range(0.9, 1.1)
 		attack_sound.play()
 	$AnimatedSprite2D.play("attack_" + last_direction)
 	_check_for_trees()
@@ -95,6 +110,34 @@ func attack() -> void:
 	await get_tree().create_timer(duration).timeout
 	attack_hitbox.monitoring = false
 	is_attacking = false
+
+func take_damage(amount: float) -> void:
+	if is_dead or is_hurt:
+		return
+	health -= amount
+	health = clamp(health, 0.0, max_health)
+	print("Player took damage: ", amount, " | HP remaining: ", health)
+	player_health_ui.take_damage(int(amount))
+	_play_hurt()  # ← this was missing before!
+	if health <= 0:
+		die()
+
+func _play_hurt() -> void:
+	is_hurt = true
+	for i in range(3):
+		$AnimatedSprite2D.modulate = Color(1, 0, 0, 1)
+		await get_tree().create_timer(0.1).timeout
+		$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+		await get_tree().create_timer(0.1).timeout
+	is_hurt = false
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy_hitbox"):
+		var damage = area.get_parent().attack_damage \
+			if area.get_parent().get("attack_damage") != null else 10.0
+		take_damage(damage)
+		var knockback_dir = (global_position - area.get_parent().global_position).normalized()
+		knockback_velocity = knockback_dir * 300.0
 
 func _check_for_trees():
 	if not tilemap: return
@@ -135,6 +178,7 @@ func collect_item(item_name: String) -> void:
 func die() -> void:
 	if is_dead: return
 	is_dead = true
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)  # reset color before dying
 	$AnimatedSprite2D.play("die")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()

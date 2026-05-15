@@ -34,7 +34,11 @@
 [ext_resource type="Script" uid="uid://xicc5hxk6rsd" path="res://scripts/sub_viewport.gd" id="31_q4233"]
 [ext_resource type="PackedScene" uid="uid://bqw6a0m7sfuhr" path="res://scenes/Pause_menu.tscn" id="32_7qive"]
 [ext_resource type="PackedScene" uid="uid://gsyk3ixrllq8" path="res://scenes/characters/animals/deer.tscn" id="33_dxr60"]
+[ext_resource type="Script" uid="uid://bi8swn6bt2x3o" path="res://scripts/player_health_ui.gd" id="34_4tk6c"]
 [ext_resource type="PackedScene" uid="uid://sjhqeq2a7yek" path="res://scenes/characters/animals/boar.tscn" id="34_ooflh"]
+[ext_resource type="Texture2D" uid="uid://2es7dqh7sj60" path="res://sprites/Ui-NinjaAdventure/Receptacle/Heart.png" id="35_k54pq"]
+[ext_resource type="PackedScene" uid="uid://dy34qtl42kt7t" path="res://scenes/characters/enemies/happyslime.tscn" id="37_k54pq"]
+[ext_resource type="PackedScene" uid="uid://pmiq6tjq3d3" path="res://scenes/characters/enemies/small_slime.tscn" id="38_45urp"]
 
 [sub_resource type="Animation" id="Animation_udium"]
 length = 0.001
@@ -706,15 +710,15 @@ texture = SubResource("GradientTexture2D_udium")
 texture_scale = 1.65
 
 [node name="GiantBambooBoss" parent="." unique_id=2101842208 instance=ExtResource("28_udium")]
-position = Vector2(757, 253)
+position = Vector2(1496, 97)
 
 [node name="GiantSlime" parent="." unique_id=946111300 instance=ExtResource("29_vo55k")]
 z_index = 1
-position = Vector2(638, 184)
+position = Vector2(412, -219)
 
 [node name="GiantSlime2" parent="." unique_id=1893218069 instance=ExtResource("29_vo55k")]
 z_index = 1
-position = Vector2(454, 321)
+position = Vector2(603, -358)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1525498765]
 process_mode = 3
@@ -756,6 +760,7 @@ points = PackedVector2Array(0, 0, 0, 200, 200, 199, 200, 0, -1, 0)
 width = 2.0
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=791859205 instance=ExtResource("32_7qive")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -765,6 +770,44 @@ offset_left = -182.25
 offset_top = -200.0
 offset_right = 182.25
 offset_bottom = 200.0
+
+[node name="PlayerHealthUI" type="Node2D" parent="CanvasLayer" unique_id=1286108853]
+script = ExtResource("34_4tk6c")
+
+[node name="Heart1" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=1771465455]
+position = Vector2(925, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("35_k54pq")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart2" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=904481551]
+position = Vector2(975, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("35_k54pq")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart3" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=117963145]
+position = Vector2(1025, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("35_k54pq")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart4" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=1936244199]
+position = Vector2(1075, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("35_k54pq")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart5" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=969927164]
+position = Vector2(1125, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("35_k54pq")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
 
 [node name="Deer" type="Node2D" parent="." unique_id=1893236806]
 
@@ -806,3 +849,9 @@ position = Vector2(-655, 1041)
 
 [node name="Boar7" parent="Boar" unique_id=517897226 instance=ExtResource("34_ooflh")]
 position = Vector2(-665, -745)
+
+[node name="draftslime" parent="." unique_id=350030379 instance=ExtResource("37_k54pq")]
+position = Vector2(1083, 773)
+
+[node name="SmallSlime" parent="." unique_id=1516032001 instance=ExtResource("38_45urp")]
+position = Vector2(1137, 786)

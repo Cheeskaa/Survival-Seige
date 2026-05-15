@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bdlyc72od0qfy"]
 
+[ext_resource type="Script" uid="uid://dyssqwevpf8mx" path="res://scripts/giant_bamboo_boss.gd" id="1_8nixf"]
 [ext_resource type="Texture2D" uid="uid://cbif6avgvanab" path="res://sprites/characters/enemies/GiantBamboo2/Attack.png" id="1_ocf80"]
 [ext_resource type="Texture2D" uid="uid://dw0dirq2p1bvw" path="res://sprites/characters/enemies/GiantBamboo2/Charge.png" id="2_8nixf"]
 [ext_resource type="Texture2D" uid="uid://l6y55oheq8ji" path="res://sprites/characters/enemies/GiantBamboo2/Hit.png" id="3_jb52j"]
@@ -205,7 +206,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cuih0")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 7.0
 }, {
@@ -292,16 +293,39 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_47cyj"]
-radius = 22.0
-height = 96.0
+radius = 23.0
+height = 72.0
 
-[node name="GiantBambooBoss" type="CharacterBody2D" unique_id=2101842208]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nixf"]
+size = Vector2(87, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb52j"]
+size = Vector2(87, 88)
+
+[node name="GiantBambooBoss" type="CharacterBody2D" unique_id=2101842208 groups=["enemy"]]
+script = ExtResource("1_8nixf")
+health_bar_scale = 5.0
+health_bar_offset = -30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=597594325]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cuih0")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1505935520]
+position = Vector2(0, 13)
 shape = SubResource("CapsuleShape2D_47cyj")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=454080134 groups=["enemy_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1252705208]
+shape = SubResource("RectangleShape2D_8nixf")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=461819580 groups=["enemy_hurtbox"]]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1065427485]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jb52j")

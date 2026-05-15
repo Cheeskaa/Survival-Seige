@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://e2cooc1wae5j" path="res://scripts/player.gd" id="1_5a25m"]
 [ext_resource type="Texture2D" uid="uid://b7kyn7x53k73k" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Attack.png" id="2_cv7tw"]
 [ext_resource type="Texture2D" uid="uid://cc5ltgre4bas4" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Dead.png" id="3_7ojbk"]
+[ext_resource type="Texture2D" uid="uid://cvvi12oaycqxq" path="res://sprites/characters/player/Characters/Hunter/SpriteSheet.png" id="4_855y6"]
 [ext_resource type="Texture2D" uid="uid://dpn2mab23cwhl" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Idle.png" id="4_sw70o"]
 [ext_resource type="Texture2D" uid="uid://cudpyvpal01tm" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Item.png" id="5_dfvkj"]
 [ext_resource type="Texture2D" uid="uid://bmbglei6wlby3" path="res://sprites/characters/player/Characters/Hunter/SeparateAnim/Walk.png" id="6_g705u"]
 [ext_resource type="AudioStream" uid="uid://5q8ug1ukmn1u" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Hit8.wav" id="7_3atuh"]
+[ext_resource type="Script" uid="uid://dsjfxyo18uuxe" path="res://scripts/attack_hitbox.gd" id="7_dfcsm"]
 [ext_resource type="AudioStream" uid="uid://co63pmbocicw7" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Sounds/Alert/Alert3.wav" id="8_mp8qg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klooa"]
@@ -28,6 +30,10 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_efo5l"]
 atlas = ExtResource("3_7ojbk")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgwrr"]
+atlas = ExtResource("4_855y6")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yag7r"]
 atlas = ExtResource("4_sw70o")
@@ -145,6 +151,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_kgwrr")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yag7r")
 }],
 "loop": true,
@@ -231,31 +245,45 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5a25m"]
 radius = 4.285714
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mm7y1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_855y6"]
+size = Vector2(15.142867, 15.428581)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfcsm"]
+radius = 6.0067987
 
 [node name="HunterCharacter" type="CharacterBody2D" unique_id=1091941096]
 scale = Vector2(3.5, 3.5)
-collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_5a25m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=17635858]
 sprite_frames = SubResource("SpriteFrames_dsusj")
-animation = &"attack_left"
+animation = &"hurt"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2134769154]
 position = Vector2(2.9802322e-08, 3.142857)
 shape = SubResource("CircleShape2D_5a25m")
 
-[node name="AttackHitbox" type="Area2D" parent="." unique_id=1237574877]
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1237574877 groups=["player_hitbox"]]
+monitoring = false
+script = ExtResource("7_dfcsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=157580761]
-position = Vector2(-3.7142854, -0.57142854)
-shape = SubResource("CircleShape2D_mm7y1")
+position = Vector2(0.1428571, 0.28571442)
+scale = Vector2(0.9999993, 0.9999993)
+shape = SubResource("RectangleShape2D_855y6")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1376084575]
 stream = ExtResource("7_3atuh")
 
 [node name="FlashlightSound" type="AudioStreamPlayer2D" parent="." unique_id=690683750]
 stream = ExtResource("8_mp8qg")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1772818070 groups=["player_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=37784392]
+position = Vector2(2.9802322e-08, 1.4285715)
+shape = SubResource("CircleShape2D_dfcsm")
+
+[connection signal="body_entered" from="AttackHitbox" to="AttackHitbox" method="_on_body_entered"]
