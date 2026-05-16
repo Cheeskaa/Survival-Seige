@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://boh2vpgarl5r2"]
 
 [ext_resource type="Script" uid="uid://qkv0rrkpiepx" path="res://scripts/weapon_axetool.gd" id="1_mbren"]
-[ext_resource type="Texture2D" uid="uid://d36sg4udjnys3" path="res://sprites/materials/Items/Weapons/AxeTool/SpriteInHand.png" id="2_djxd0"]
+[ext_resource type="Texture2D" uid="uid://eextyuwgucex" path="res://sprites/materials/Items/Weapons/AxeTool/Sprite.png" id="2_mbren"]
 
-[node name="AxeTool" type="Node2D" unique_id=112491859]
+[node name="AxeTool" type="Node2D" unique_id=112491859 groups=["weapon"]]
 script = ExtResource("1_mbren")
+swing_duration = null
+tree_hits_required = null
+weapon_name = null
+damage = null
+attack_range = null
+attack_speed = null
+detection_range = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1801253694]
 position = Vector2(16, 0)
-texture = ExtResource("2_djxd0")
+texture = ExtResource("2_mbren")

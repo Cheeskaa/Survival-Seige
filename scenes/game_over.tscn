@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://da3a2eo1xmo11"]
+
+[ext_resource type="Script" uid="uid://b26ob4rlh801b" path="res://scripts/game_over.gd" id="1_xeevv"]
+
+[node name="GameOver" type="Control" unique_id=562613073]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xeevv")
+
+[node name="Panel" type="Panel" parent="." unique_id=724808675]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 84.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1487213211]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=1577514919]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=1688983748]
+layout_mode = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="DaysLabel" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=1985911007]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Days Survived: 0"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=1836790511]
+layout_mode = 2
+text = "Best: 0 days"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="NinePatchRect/VBoxContainer" unique_id=869413816]
+layout_mode = 2
+text = "Play Again"
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/VBoxContainer" unique_id=908103149]
+layout_mode = 2
+text = "Quit"

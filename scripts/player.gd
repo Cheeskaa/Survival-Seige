@@ -50,7 +50,9 @@ func _ready() -> void:
 	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	
 	await get_tree().process_frame
-	
+	inventory["BigSword"] = 1
+	inventory["Bow"] = 1
+	weapon_manager.equip_weapon("BigSword")
 	# SAFE DAY/NIGHT CYCLE FINDING
 	if is_inside_tree() and get_tree() != null:
 		cycle = get_tree().get_first_node_in_group("day_night_cycle")
@@ -59,11 +61,6 @@ func _ready() -> void:
 			_on_day_time_changed(cycle.current_state)
 		else:
 			print("Notice: day_night_cycle node not present in this map.")
-	
-	inventory["BigSword"] = 1
-	inventory["Bow"] = 1
-	inventory["AxeTool"] = 1
-	weapon_manager.equip_weapon("BigSword")
 
 func _on_day_time_changed(state) -> void:
 	if point_light_2d and cycle:
@@ -75,12 +72,6 @@ func sync_ui_to_inventory(new_ui_data: Dictionary):
 
 func _physics_process(_delta: float) -> void:
 	if is_dead: return
-
-	if Input.is_action_pressed("attack"):
-		if weapon_manager.current_weapon != null:
-			weapon_manager.attack()
-		else:
-			attack()
 
 	if knockback_velocity != Vector2.ZERO:
 		velocity = knockback_velocity

@@ -373,6 +373,7 @@ radius = 7.499999
 radius = 7.603452
 
 [node name="happyslimeBlue" type="CharacterBody2D" unique_id=1424920649 groups=["enemy"]]
+z_index = 1
 scale = Vector2(2, 2)
 collision_layer = 3
 script = ExtResource("1_gtw5x")

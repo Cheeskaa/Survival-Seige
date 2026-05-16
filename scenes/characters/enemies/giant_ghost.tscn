@@ -144,9 +144,9 @@ radius = 34.0147
 radius = 33.06055
 
 [node name="GiantGhost" type="CharacterBody2D" unique_id=255086737 groups=["enemy"]]
+z_index = 1
 collision_layer = 3
 script = ExtResource("1_bovgv")
-health_bar_scale = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=278652060]
 position = Vector2(0, -2)

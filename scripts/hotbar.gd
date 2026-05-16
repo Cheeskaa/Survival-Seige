@@ -1,6 +1,6 @@
 extends Control
 
-@onready var hbox = $HBoxContainer 
+@onready var hbox = $HBoxContainer
 
 var icon_map = {
 	"Raw Meat": preload("res://sprites/materials/Meat/Meat Resource/Meat Resource.png"),
@@ -14,30 +14,42 @@ var icon_map = {
 }
 
 func _ready() -> void:
+	# Wait for everything to be ready
+	await get_tree().process_frame
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.inventory_changed.connect(update_slots)
+		# Manually trigger first update with current inventory
+		update_slots(player.inventory)
+	else:
+		print("ERROR: Player not found in hotbar!")
 
 func update_slots(items: Dictionary) -> void:
-	if not hbox: return
+	if not hbox:
+		return
+
 	var player = get_tree().get_first_node_in_group("player")
 	var selected = player.selected_slot if player else 0
-	
-	var slots = hbox.get_children() 
+	var slots = hbox.get_children()
 	var item_names = items.keys()
+
+	print("Hotbar updating — items: ", item_names, " | slots: ", slots.size())
 
 	for i in range(slots.size()):
 		var slot = slots[i]
 		if i < item_names.size():
 			var i_name = item_names[i]
 			var i_count = items[i_name]
-			var i_tex = icon_map.get(i_name)
+			var i_tex = icon_map.get(i_name, null)
 			if slot.has_method("set_slot_data"):
 				slot.set_slot_data(i_name, i_count, i_tex)
+			else:
+				print("WARNING: slot ", slot.name, " has no set_slot_data method")
 		else:
 			if slot.has_method("set_slot_data"):
 				slot.set_slot_data("", 0, null)
-		
+
+		# Highlight selected slot
 		if slot.has_method("set_selected"):
 			slot.set_selected(i == selected)
 		else:
