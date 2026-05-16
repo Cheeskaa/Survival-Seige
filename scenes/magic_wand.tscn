@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://pyjebocr68rk"]
 
 [ext_resource type="Script" uid="uid://ognef6sycn6u" path="res://scripts/weapon_magicwand.gd" id="1_w20rb"]
-[ext_resource type="Texture2D" uid="uid://jc8gkrss11te" path="res://sprites/materials/Items/Weapons/MagicWand/SpriteInHand.png" id="2_tvs7n"]
+[ext_resource type="Texture2D" uid="uid://dhxtli2twutsf" path="res://sprites/materials/Items/Weapons/MagicWand/Sprite.png" id="2_w20rb"]
 
 [node name="MagicWand" type="Node2D" unique_id=2136883400]
 script = ExtResource("1_w20rb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=299284533]
-position = Vector2(16, 0)
-texture = ExtResource("2_tvs7n")
+position = Vector2(12, 0)
+texture = ExtResource("2_w20rb")

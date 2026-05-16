@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dh17307ikkgwl"]
 
 [ext_resource type="Script" uid="uid://cdsd04cayctqh" path="res://scripts/weapon_stick.gd" id="1_ld7er"]
-[ext_resource type="Texture2D" uid="uid://brcetkp7xoose" path="res://sprites/materials/Items/Weapons/Stick/SpriteInHand.png" id="2_m8wbh"]
+[ext_resource type="Texture2D" uid="uid://88unjcy3rbm" path="res://sprites/materials/Items/Weapons/Stick/Sprite.png" id="2_ld7er"]
 
-[node name="Stick" type="Node2D" unique_id=1560890814]
+[node name="Stick" type="Node2D" unique_id=1560890814 groups=["weapon"]]
 script = ExtResource("1_ld7er")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2070461255]
-position = Vector2(16, 0)
-texture = ExtResource("2_m8wbh")
+position = Vector2(12, 0)
+texture = ExtResource("2_ld7er")

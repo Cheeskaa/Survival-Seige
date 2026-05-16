@@ -359,6 +359,7 @@ radius = 8.149002
 radius = 8.149002
 
 [node name="happyslimeLava" type="CharacterBody2D" unique_id=1734586594 groups=["enemy"]]
+z_index = 1
 scale = Vector2(2, 2)
 collision_layer = 3
 script = ExtResource("1_it56m")

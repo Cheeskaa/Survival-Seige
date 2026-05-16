@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b72nyhqb7ixwj"]
+
+[ext_resource type="Texture2D" uid="uid://dfw7xmdj5682v" path="res://sprites/others/campfire-Sheet.png" id="1_54scn"]
+[ext_resource type="Script" uid="uid://4l0lulfd5tum" path="res://scripts/campfire.gd" id="1_yfrnb"]
+[ext_resource type="PackedScene" uid="uid://dfbictxbgcyic" path="res://scenes/enemy_health_bar.tscn" id="2_yfrnb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pk5p"]
+atlas = ExtResource("1_54scn")
+region = Rect2(0, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6xh0"]
+atlas = ExtResource("1_54scn")
+region = Rect2(36, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v5ef"]
+atlas = ExtResource("1_54scn")
+region = Rect2(72, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63vhv"]
+atlas = ExtResource("1_54scn")
+region = Rect2(108, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2pjx"]
+atlas = ExtResource("1_54scn")
+region = Rect2(144, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te7ig"]
+atlas = ExtResource("1_54scn")
+region = Rect2(180, 0, 36, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0f1eb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pk5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6xh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v5ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63vhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2pjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te7ig")
+}],
+"loop": true,
+"name": &"burn",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sbayf"]
+radius = 5.0
+height = 24.0
+
+[sub_resource type="Gradient" id="Gradient_8q2vg"]
+offsets = PackedFloat32Array(0, 0.4070513, 0.5885093)
+colors = PackedColorArray(1, 1, 0.6509804, 1, 0.060559005, 0.060559005, 0.060559005, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_73d8c"]
+gradient = SubResource("Gradient_8q2vg")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.50427353, 0.50085473)
+
+[node name="Campfire" type="Area2D" unique_id=255311110]
+scale = Vector2(2, 2)
+script = ExtResource("1_yfrnb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1536957979]
+sprite_frames = SubResource("SpriteFrames_0f1eb")
+animation = &"burn"
+frame = 1
+frame_progress = 0.22884052
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2122477148]
+position = Vector2(0, 14)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_sbayf")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2044622721]
+energy = 0.2
+texture = SubResource("GradientTexture2D_73d8c")
+texture_scale = 7.0
+
+[node name="EnemyHealthBar" parent="." unique_id=54047357 instance=ExtResource("2_yfrnb")]
+position = Vector2(0, -25)
+scale = Vector2(2, 2)

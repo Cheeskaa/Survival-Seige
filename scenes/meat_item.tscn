@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://jmdhmtb0ogkn"]
+
+[ext_resource type="Script" uid="uid://dj5ehx600eixd" path="res://scripts/meat_item.gd" id="1_tfwvn"]
+[ext_resource type="Texture2D" uid="uid://dvgcjer000vho" path="res://sprites/materials/Meat/Meat Resource/Meat Resource.png" id="2_hqyie"]
+
+[node name="MeatItem" type="Node2D" unique_id=1259483309]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_tfwvn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2004819318]
+position = Vector2(24.999998, 25)
+texture = ExtResource("2_hqyie")

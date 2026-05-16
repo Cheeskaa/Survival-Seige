@@ -234,9 +234,9 @@ size = Vector2(77, 43)
 size = Vector2(77, 41)
 
 [node name="GiantSlime" type="CharacterBody2D" unique_id=946111300 groups=["enemy"]]
+z_index = 1
 collision_layer = 3
 script = ExtResource("1_58myo")
-health_bar_scale = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=929896703]
 scale = Vector2(2, 2)

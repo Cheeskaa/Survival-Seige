@@ -7,5 +7,6 @@
 script = ExtResource("1_prjx1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2032176726]
-position = Vector2(0, 18)
+position = Vector2(12, 1)
+rotation = -1.5707964
 texture = ExtResource("2_rivji")

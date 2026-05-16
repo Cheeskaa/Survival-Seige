@@ -303,9 +303,8 @@ size = Vector2(87, 88)
 size = Vector2(87, 88)
 
 [node name="GiantBambooBoss" type="CharacterBody2D" unique_id=2101842208 groups=["enemy"]]
+z_index = 1
 script = ExtResource("1_8nixf")
-health_bar_scale = 5.0
-health_bar_offset = -30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=597594325]
 scale = Vector2(2, 2)

@@ -8,18 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://bqw6a0m7sfuhr" path="res://scenes/Pause_menu.tscn" id="6_o1tcx"]
 [ext_resource type="Script" uid="uid://bi8swn6bt2x3o" path="res://scripts/player_health_ui.gd" id="7_rpuxp"]
 [ext_resource type="Texture2D" uid="uid://2es7dqh7sj60" path="res://sprites/Ui-NinjaAdventure/Receptacle/Heart.png" id="8_nthub"]
-[ext_resource type="FontFile" uid="uid://dedmx854flksl" path="res://sprites/Ui-NinjaAdventure/Font/NormalFont.ttf" id="9_44lqw"]
+[ext_resource type="FontFile" uid="uid://ba2ggtcvyvuen" path="res://sprites/fonts/PirataOne-Regular.ttf" id="9_nrtoj"]
 [ext_resource type="Script" uid="uid://b0d3ib7hqvo4t" path="res://scripts/day_night_ui.gd" id="10_dwmkc"]
 [ext_resource type="PackedScene" uid="uid://nyyle8b425o7" path="res://scenes/ShopUI.tscn" id="11_30fn3"]
 [ext_resource type="PackedScene" uid="uid://cn4kas2vd060a" path="res://scenes/characters/player/hunterPlayer.tscn" id="12_7c4bj"]
 [ext_resource type="Script" uid="uid://bih1hgoln6r2a" path="res://scripts/day_and_night_cycle.gd" id="13_nrtoj"]
 
-[sub_resource type="Gradient" id="Gradient_8q2vg"]
+[sub_resource type="Gradient" id="Gradient_nrtoj"]
 offsets = PackedFloat32Array(0, 0.53571427, 0.5885093)
 colors = PackedColorArray(1, 1, 1, 1, 0.060559005, 0.060559005, 0.060559005, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nrtoj"]
-gradient = SubResource("Gradient_8q2vg")
+gradient = SubResource("Gradient_nrtoj")
 width = 128
 height = 128
 fill = 1
@@ -121,7 +121,7 @@ offset_left = 541.0
 offset_top = 11.0
 offset_right = 584.0
 offset_bottom = 34.0
-theme_override_fonts/font = ExtResource("9_44lqw")
+theme_override_fonts/font = ExtResource("9_nrtoj")
 text = "Day 1"
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1420258559]
@@ -129,7 +129,7 @@ offset_left = 999.0
 offset_top = 67.0
 offset_right = 1101.0
 offset_bottom = 90.0
-theme_override_fonts/font = ExtResource("9_44lqw")
+theme_override_fonts/font = ExtResource("9_nrtoj")
 text = "Night in: 2:00"
 
 [node name="DayNightUI" type="Node" parent="CanvasLayer" unique_id=1047652453]

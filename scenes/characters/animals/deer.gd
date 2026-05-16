@@ -27,6 +27,8 @@ var player: Node2D = null
 var current_health: int = 0
 
 func _ready() -> void:
+	add_to_group("animal")
+	add_to_group("enemy")
 	spawn_position = global_position
 	target_position = global_position
 	current_health = max_health
@@ -114,9 +116,11 @@ func _stop_fleeing() -> void:
 	_start_idle()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.name == "AttackHitbox" and not is_hurt and not is_dead:
-		if player and player.get("is_attacking") == true:
-			take_damage(1)
+	if is_hurt or is_dead:
+		return
+	# Works with both player AttackHitbox and weapon attacks
+	if area.is_in_group("player_hitbox") or area.get_parent().is_in_group("weapon"):
+		take_damage(1)
 
 func take_damage(amount: int) -> void:
 	current_health -= amount

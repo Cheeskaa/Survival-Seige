@@ -1,22 +1,25 @@
 extends "res://scripts/base_weapon.gd"
 
-@export var swing_duration: float = 0.25
+@export var swing_duration: float = 0.15
+
+func _ready() -> void:
+	super._ready()
+	attack_range = 70.0
+	attack_speed = 4.0
+	damage = 8.0
 
 func _do_attack() -> void:
-	if nearest_enemy == null:
-		return
-	var dist = global_position.distance_to(nearest_enemy.global_position)
-	if dist > attack_range:
-		return
-	
-	# Swing animation
-	var original_rot = rotation
+	# Always swing
 	var tween = create_tween()
-	tween.tween_property(self, "rotation", rotation - 0.6, swing_duration * 0.5)
-	tween.tween_property(self, "rotation", rotation + 0.6, swing_duration)
-	tween.tween_property(self, "rotation", original_rot, swing_duration * 0.5)
-	
-	if nearest_enemy.has_method("take_damage"):
-		nearest_enemy.take_damage(damage)
-	
+	tween.tween_property(sprite, "rotation", -0.8, swing_duration * 0.3)
+	tween.tween_property(sprite, "rotation", 0.8, swing_duration * 0.7)
+	tween.tween_property(sprite, "rotation", 0.0, swing_duration * 0.3)
+
+	# Only deal damage if enemy is in range
+	if nearest_enemy != null:
+		var dist = global_position.distance_to(nearest_enemy.global_position)
+		if dist <= attack_range:
+			if nearest_enemy.has_method("take_damage"):
+				nearest_enemy.take_damage(damage)
+
 	_start_cooldown()
