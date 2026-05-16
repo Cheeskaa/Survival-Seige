@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://nyyle8b425o7"]
+
+[ext_resource type="Script" uid="uid://cwtuurgykdysg" path="res://scenes/shop_ui.gd" id="1_owitj"]
+[ext_resource type="Texture2D" uid="uid://qvflbssj2hea" path="res://FromAssetsPack/Tinyswords/Tiny Swords (Free Pack)/UI Elements/UI Elements/Banners/Banner_Slots.png" id="2_ed10p"]
+[ext_resource type="FontFile" uid="uid://dedmx854flksl" path="res://sprites/Ui-NinjaAdventure/Font/NormalFont.ttf" id="3_km6jy"]
+[ext_resource type="FontFile" uid="uid://ba2ggtcvyvuen" path="res://sprites/fonts/PirataOne-Regular.ttf" id="4_l6rfk"]
+[ext_resource type="Texture2D" uid="uid://dmk563mw8y8s5" path="res://sprites/materials/Wood Resource.png" id="5_uvrld"]
+[ext_resource type="Texture2D" uid="uid://uf6m2tkfhbby" path="res://sprites/materials/Items/Resource/BarIron.png" id="6_hrnbg"]
+[ext_resource type="Texture2D" uid="uid://bxstchyknapx" path="res://sprites/materials/Items/Weapons/BigSword/Sprite.png" id="7_rmper"]
+[ext_resource type="Texture2D" uid="uid://ctcdpbdg5xcp2" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetRelief.png" id="8_mkp2j"]
+[ext_resource type="Texture2D" uid="uid://88unjcy3rbm" path="res://sprites/materials/Items/Weapons/Stick/Sprite.png" id="9_xtjtn"]
+
+[node name="ShopUi" type="Control" unique_id=543070866]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -443.5
+offset_top = -295.0
+offset_right = 443.5
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owitj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1040834874]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 879.0
+offset_bottom = 564.0
+size_flags_vertical = 8
+texture = ExtResource("2_ed10p")
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1904711473]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = 45.0
+offset_right = 94.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_km6jy")
+theme_override_font_sizes/font_size = 48
+text = "CRAFT
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=1235247632]
+z_index = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.5
+offset_top = -170.0
+offset_right = 419.5
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer" unique_id=1315480389]
+layout_mode = 2
+
+[node name="SwordButton" type="Button" parent="NinePatchRect/VBoxContainer/NinePatchRect" unique_id=1110377921]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 71.0
+offset_right = 313.0
+offset_bottom = 102.0
+theme_override_colors/font_pressed_color = Color(0.5411765, 0.37254903, 0.25490198, 1)
+theme_override_colors/font_hover_color = Color(0.9529412, 0.89411765, 0.7882353, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_l6rfk")
+theme_override_font_sizes/font_size = 30
+text = "Buy BigSword"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect/SwordButton" unique_id=1258074093]
+position = Vector2(44, -26)
+texture = ExtResource("5_uvrld")
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/SwordButton" unique_id=1173665039]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -63.5
+offset_right = -26.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "+
+"
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/SwordButton/Label" unique_id=1437663074]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 88.0
+offset_top = -34.5
+offset_right = 102.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "="
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect/SwordButton" unique_id=1874808632]
+position = Vector2(138, -29)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_hrnbg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect/SwordButton" unique_id=1741410192]
+position = Vector2(227.99998, -30.999998)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_rmper")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer" unique_id=1303880600]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Walls" type="Button" parent="NinePatchRect/VBoxContainer/NinePatchRect2" unique_id=1528111425]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = 201.0
+offset_right = 312.0
+offset_bottom = 232.0
+grow_vertical = 2
+theme_override_colors/font_pressed_color = Color(0.5411765, 0.37254903, 0.25490198, 1)
+theme_override_colors/font_hover_color = Color(0.9529412, 0.89411765, 0.7882353, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_l6rfk")
+theme_override_font_sizes/font_size = 30
+text = "Buy Walls
+"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Walls" unique_id=466378421]
+position = Vector2(61.5, -27)
+texture = ExtResource("5_uvrld")
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Walls" unique_id=1979211301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -64.5
+offset_right = 127.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "="
+horizontal_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Walls" unique_id=1762410678]
+position = Vector2(186.5, -30)
+texture = ExtResource("8_mkp2j")
+region_enabled = true
+region_rect = Rect2(144.89275, 79.11324, 46.609634, 49.506294)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer" unique_id=57821319]
+layout_mode = 2
+
+[node name="Stick" type="Button" parent="NinePatchRect/VBoxContainer/NinePatchRect3" unique_id=960549160]
+layout_mode = 0
+offset_left = 56.5
+offset_top = 322.0
+offset_right = 306.5
+offset_bottom = 370.0
+theme_override_colors/font_pressed_color = Color(0.5411765, 0.37254903, 0.25490198, 1)
+theme_override_colors/font_hover_color = Color(0.9529412, 0.89411765, 0.7882353, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_l6rfk")
+theme_override_font_sizes/font_size = 30
+text = "Buy Stick"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect3/Stick" unique_id=409699666]
+position = Vector2(61.5, -27)
+texture = ExtResource("5_uvrld")
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect3/Stick" unique_id=426571094]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -63.5
+offset_right = 128.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "="
+horizontal_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect/VBoxContainer/NinePatchRect3/Stick" unique_id=936857150]
+position = Vector2(174.5, -27.999998)
+rotation = 0.40627402
+scale = Vector2(3, 3)
+texture = ExtResource("9_xtjtn")
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/NinePatchRect/SwordButton" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/NinePatchRect2/Walls" to="." method="_on_walls_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/NinePatchRect3/Stick" to="." method="_on_stick_pressed"]

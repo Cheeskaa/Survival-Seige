@@ -8,7 +8,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		# 1. Add item to player inventory
-		body.collect_item("Wood")
+		body.collect_item("Gem")
 		
 		# 2. Make the meat invisible and stop it from being picked up again
 		set_deferred("monitoring", false)

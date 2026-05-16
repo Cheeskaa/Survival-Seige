@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://s7jes07xjuam"]
+
+[ext_resource type="Script" uid="uid://cn1eb1sj44ges" path="res://scenes/world.gd" id="1_h1bdy"]
+[ext_resource type="Script" uid="uid://cxhjw12ctufn2" path="res://scripts/canvas_layer.gd" id="2_7c4bj"]
+[ext_resource type="PackedScene" uid="uid://rh2xleq7ushw" path="res://scenes/Hotbar.tscn" id="3_nrtoj"]
+[ext_resource type="PackedScene" uid="uid://c0o2oklrqm30p" path="res://scenes/Inventory.tscn" id="4_i4b1j"]
+[ext_resource type="Script" uid="uid://xicc5hxk6rsd" path="res://scripts/sub_viewport.gd" id="5_c0d7e"]
+[ext_resource type="PackedScene" uid="uid://bqw6a0m7sfuhr" path="res://scenes/Pause_menu.tscn" id="6_o1tcx"]
+[ext_resource type="Script" uid="uid://bi8swn6bt2x3o" path="res://scripts/player_health_ui.gd" id="7_rpuxp"]
+[ext_resource type="Texture2D" uid="uid://2es7dqh7sj60" path="res://sprites/Ui-NinjaAdventure/Receptacle/Heart.png" id="8_nthub"]
+[ext_resource type="FontFile" uid="uid://dedmx854flksl" path="res://sprites/Ui-NinjaAdventure/Font/NormalFont.ttf" id="9_44lqw"]
+[ext_resource type="Script" uid="uid://b0d3ib7hqvo4t" path="res://scripts/day_night_ui.gd" id="10_dwmkc"]
+[ext_resource type="PackedScene" uid="uid://nyyle8b425o7" path="res://scenes/ShopUI.tscn" id="11_30fn3"]
+[ext_resource type="PackedScene" uid="uid://cn4kas2vd060a" path="res://scenes/characters/player/hunterPlayer.tscn" id="12_7c4bj"]
+[ext_resource type="Script" uid="uid://bih1hgoln6r2a" path="res://scripts/day_and_night_cycle.gd" id="13_nrtoj"]
+
+[sub_resource type="Gradient" id="Gradient_8q2vg"]
+offsets = PackedFloat32Array(0, 0.53571427, 0.5885093)
+colors = PackedColorArray(1, 1, 1, 1, 0.060559005, 0.060559005, 0.060559005, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nrtoj"]
+gradient = SubResource("Gradient_8q2vg")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.50427353, 0.50085473)
+
+[node name="World" type="Node2D" unique_id=608453631]
+script = ExtResource("1_h1bdy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=454462506]
+process_mode = 3
+script = ExtResource("2_7c4bj")
+
+[node name="Hotbar" parent="CanvasLayer" unique_id=856846084 instance=ExtResource("3_nrtoj")]
+
+[node name="Inventory" parent="CanvasLayer" unique_id=1635937929 instance=ExtResource("4_i4b1j")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.25
+offset_top = -141.5
+offset_right = 223.25
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1474982748]
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 235.0
+offset_bottom = 218.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=401688107]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+script = ExtResource("5_c0d7e")
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=820998139]
+zoom = Vector2(0.2, 0.2)
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/SubViewportContainer" unique_id=1805623509]
+points = PackedVector2Array(0, 0, 0, 200, 200, 199, 200, 0, -1, 0)
+width = 2.0
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=791859205 instance=ExtResource("6_o1tcx")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.25
+offset_top = -200.0
+offset_right = 182.25
+offset_bottom = 200.0
+
+[node name="PlayerHealthUI" type="Node2D" parent="CanvasLayer" unique_id=1875261544]
+script = ExtResource("7_rpuxp")
+
+[node name="Heart1" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=79204194]
+position = Vector2(925, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("8_nthub")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart2" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=1382134298]
+position = Vector2(975, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("8_nthub")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart3" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=839893686]
+position = Vector2(1025, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("8_nthub")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart4" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=1249456326]
+position = Vector2(1075, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("8_nthub")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Heart5" type="Sprite2D" parent="CanvasLayer/PlayerHealthUI" unique_id=446907482]
+position = Vector2(1125, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("8_nthub")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="DayLabel" type="Label" parent="CanvasLayer" unique_id=1490338475]
+offset_left = 541.0
+offset_top = 11.0
+offset_right = 584.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("9_44lqw")
+text = "Day 1"
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1420258559]
+offset_left = 999.0
+offset_top = 67.0
+offset_right = 1101.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("9_44lqw")
+text = "Night in: 2:00"
+
+[node name="DayNightUI" type="Node" parent="CanvasLayer" unique_id=1047652453]
+script = ExtResource("10_dwmkc")
+
+[node name="ShopUi" parent="CanvasLayer" unique_id=543070866 instance=ExtResource("11_30fn3")]
+visible = false
+
+[node name="player" parent="." unique_id=1091941096 instance=ExtResource("12_7c4bj")]
+z_index = 1
+position = Vector2(666, 289.00003)
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=390435967]
+position = Vector2(-0.33333334, -0.6190542)
+zoom = Vector2(0.5, 0.5)
+
+[node name="PointLight2D" type="PointLight2D" parent="player" unique_id=1074370630]
+energy = 1.06
+texture = SubResource("GradientTexture2D_nrtoj")
+texture_scale = 1.65
+
+[node name="CurrentMap" type="Node2D" parent="." unique_id=408926181]
+
+[node name="DayAndNightCycle" type="CanvasModulate" parent="." unique_id=2044831201]
+script = ExtResource("13_nrtoj")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b3nm7sh6y22xf"]
+
+[ext_resource type="Script" uid="uid://cdi8wsooe1qp5" path="res://scenes/ores/ore_spawner.gd" id="1_xoc7o"]
+
+[node name="OreSpawner" type="Node2D" unique_id=1698009549]
+script = ExtResource("1_xoc7o")
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1658352085]
+one_shot = true

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://53gl3suk3gx5"]
+
+[ext_resource type="Texture2D" uid="uid://h1aww47ask0b" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_rdwwc"]
+[ext_resource type="PackedScene" uid="uid://c1my1fps87yks" path="res://scenes/ores/gem.tscn" id="1_re87n"]
+
+[sub_resource type="GDScript" id="GDScript_rdwwc"]
+script/source = "extends StaticBody2D
+
+@export var gem_type: String = \"emerald\" # Change to 'diamond' for Diamond rock
+@export var health: int = 3
+@export var gem_scene: PackedScene # Drag Gem.tscn here
+
+func hit():
+	health -= 1
+	# Shake/Flash effect
+	modulate = Color(10,10,10)
+	await get_tree().create_timer(0.05).timeout
+	modulate = Color(1,1,1)
+
+	if health <= 0:
+		var drop = gem_scene.instantiate()
+		drop.gem_type = gem_type
+		get_parent().add_child(drop)
+		drop.global_position = global_position
+		queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_re87n"]
+radius = 20.09975
+
+[node name="Emerald" type="StaticBody2D" unique_id=578399199]
+script = SubResource("GDScript_rdwwc")
+gem_scene = ExtResource("1_re87n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=603173360]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_rdwwc")
+region_enabled = true
+region_rect = Rect2(144.64069, 258.10815, 29.856567, 26.79898)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=774645438]
+shape = SubResource("CircleShape2D_re87n")

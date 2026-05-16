@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bunhglkgemwl3"]
+
+[ext_resource type="Texture2D" uid="uid://h1aww47ask0b" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_q22do"]
+[ext_resource type="PackedScene" uid="uid://c1my1fps87yks" path="res://scenes/ores/gem.tscn" id="1_vtyk6"]
+
+[sub_resource type="GDScript" id="GDScript_q22do"]
+script/source = "extends StaticBody2D
+
+@export var gem_type: String = \"diamond\" # Change to 'diamond' for Diamond rock
+@export var health: int = 3
+@export var gem_scene: PackedScene # Drag Gem.tscn here
+
+func hit():
+	health -= 1
+	# Shake/Flash effect
+	modulate = Color(10,10,10)
+	await get_tree().create_timer(0.05).timeout
+	modulate = Color(1,1,1)
+
+	if health <= 0:
+		var drop = gem_scene.instantiate()
+		drop.gem_type = gem_type
+		get_parent().add_child(drop)
+		
+		# Add a small random offset so it doesn't spawn perfectly centered
+		var offset = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+		drop.global_position = global_position + offset
+		
+		queue_free()
+		
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtyk6"]
+radius = 20.09975
+
+[node name="Diamond" type="StaticBody2D" unique_id=2096208165]
+script = SubResource("GDScript_q22do")
+gem_scene = ExtResource("1_vtyk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1126159757]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_q22do")
+region_enabled = true
+region_rect = Rect2(144.45752, 226.28046, 30.270264, 27.500427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=694430303]
+shape = SubResource("CircleShape2D_vtyk6")

@@ -1,31 +1,33 @@
 extends CharacterBody2D
 
-@onready var player_health_ui: Node2D = $"../CanvasLayer/PlayerHealthUI"
+# --- Node Variables (Assigned Safely in _ready) ---
+var player_health_ui: Node2D = null
+var tilemap: TileMapLayer = null
 
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var attack_hitbox: Area2D = $AttackHitbox
 @onready var attack_sound: AudioStreamPlayer2D = $AttackSound
 @onready var flashlight_sound: AudioStreamPlayer2D = $FlashlightSound
 @onready var wood_scene = preload("res://scenes/wood_drop.tscn")
-@onready var tilemap: TileMapLayer = get_parent().get_node("props")
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var weapon_manager: Node2D = $WeaponManager
 
+# --- Stats ---
 @export var speed: float = 400.0
 @export var tree_respawn_time: float = 30.0
 @export var attack_damage: float = 10.0
-@export var max_health: float = 100.0  # 5 hearts x 4 HP each = 20 total
+@export var max_health: float = 100.0
 
+# --- State Variables ---
 var health: float = 100.0
 var tree_health: Dictionary = {}
 var is_dead: bool = false
 var is_attacking: bool = false
-var cycle
+var cycle = null
 var last_direction: String = "down"
 var knockback_velocity: Vector2 = Vector2.ZERO
 var is_hurt: bool = false
-# Add with other vars
-var hotbar_items: Array = []  # tracks what's in hotbar slots
+var hotbar_items: Array = []
 var selected_slot: int = 0
 
 var inventory: Dictionary = {}
@@ -33,29 +35,39 @@ signal inventory_changed(new_inventory: Dictionary)
 
 func _ready() -> void:
 	add_to_group("player")
+	
+	# SAFE NODE FETCHING: Prevents crashes on map changes
+	player_health_ui = get_node_or_null("../CanvasLayer/PlayerHealthUI")
+	
+	if get_parent() and get_parent().has_node("props"):
+		tilemap = get_parent().get_node("props")
+
 	if point_light_2d:
 		point_light_2d.enabled = false
 		point_light_2d.energy = 1.0
+		
 	attack_hitbox.monitoring = false
 	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
+	
 	await get_tree().process_frame
-	cycle = get_tree().get_first_node_in_group("day_night_cycle")
-	if cycle == null:
-		print("ERROR: day_night_cycle not found!")
-		return
-	cycle.change_day_time.connect(_on_day_time_changed)
-	# Sync immediately with current state
-	_on_day_time_changed(cycle.current_state)
+	
+	# SAFE DAY/NIGHT CYCLE FINDING
+	if is_inside_tree() and get_tree() != null:
+		cycle = get_tree().get_first_node_in_group("day_night_cycle")
+		if cycle != null:
+			cycle.change_day_time.connect(_on_day_time_changed)
+			_on_day_time_changed(cycle.current_state)
+		else:
+			print("Notice: day_night_cycle node not present in this map.")
+	
 	inventory["BigSword"] = 1
 	inventory["Bow"] = 1
 	inventory["AxeTool"] = 1
 	weapon_manager.equip_weapon("BigSword")
 
 func _on_day_time_changed(state) -> void:
-	if state == cycle.DAY_STATE.NIGHT:
-		point_light_2d.enabled = true
-	else:
-		point_light_2d.enabled = false
+	if point_light_2d and cycle:
+		point_light_2d.enabled = (state == cycle.DAY_STATE.NIGHT)
 
 func sync_ui_to_inventory(new_ui_data: Dictionary):
 	inventory = new_ui_data
@@ -64,7 +76,6 @@ func sync_ui_to_inventory(new_ui_data: Dictionary):
 func _physics_process(_delta: float) -> void:
 	if is_dead: return
 
-# Hold left click to keep attacking
 	if Input.is_action_pressed("attack"):
 		if weapon_manager.current_weapon != null:
 			weapon_manager.attack()
@@ -97,21 +108,18 @@ func _physics_process(_delta: float) -> void:
 	_update_animation(direction)
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Number keys to switch slots
 	for i in range(1, 6):
 		if event.is_action_pressed("slot_" + str(i)):
 			_select_slot(i - 1)
 	
-	# Left click to attack
 	if event.is_action_pressed("attack"):
 		if weapon_manager.current_weapon != null:
 			weapon_manager.attack()
 		else:
-			attack()  # use default attack if no weapon
+			attack()
 
 func _select_slot(index: int) -> void:
 	selected_slot = index
-	# Get item in this slot
 	var items = inventory.keys()
 	if index < items.size():
 		var item = items[index]
@@ -148,7 +156,10 @@ func attack() -> void:
 		attack_sound.pitch_scale = randf_range(0.9, 1.1)
 		attack_sound.play()
 	$AnimatedSprite2D.play("attack_" + last_direction)
+	
+	_check_for_ores()
 	_check_for_trees()
+	
 	await get_tree().create_timer(0.1).timeout
 	attack_hitbox.monitoring = true
 	var frames = $AnimatedSprite2D.sprite_frames
@@ -158,16 +169,37 @@ func attack() -> void:
 	attack_hitbox.monitoring = false
 	is_attacking = false
 
+func _check_for_ores() -> void:
+	var reach = 50.0 
+	var offset = Vector2.ZERO
+	if last_direction == "down": offset.y = reach
+	elif last_direction == "up": offset.y = -reach
+	elif last_direction == "right": offset.x = reach
+	elif last_direction == "left": offset.x = -reach
+	
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = global_position + offset
+	query.collision_mask = 1 
+	
+	var results = space_state.intersect_point(query)
+	for result in results:
+		var hit_obj = result.collider
+		if hit_obj.has_method("hit"):
+			hit_obj.hit()
+			return
+
 func take_damage(amount: float) -> void:
-	if is_dead or is_hurt:
-		return
+	if is_dead or is_hurt: return
 	health -= amount
 	health = clamp(health, 0.0, max_health)
 	print("Player took damage: ", amount, " | HP remaining: ", health)
-	player_health_ui.take_damage(int(amount))
-	_play_hurt()  # ← this was missing before!
-	if health <= 0:
-		die()
+	
+	if player_health_ui:
+		player_health_ui.take_damage(int(amount))
+		
+	_play_hurt()
+	if health <= 0: die()
 
 func _play_hurt() -> void:
 	is_hurt = true
@@ -180,15 +212,13 @@ func _play_hurt() -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox"):
-		var damage = area.get_parent().attack_damage \
-			if area.get_parent().get("attack_damage") != null else 10.0
+		var damage = area.get_parent().attack_damage if area.get_parent().get("attack_damage") != null else 10.0
 		take_damage(damage)
 		var knockback_dir = (global_position - area.get_parent().global_position).normalized()
 		knockback_velocity = knockback_dir * 300.0
 
-# Update _check_for_trees for axe bonus
 func _check_for_trees_with_axe(hits_required: int) -> void:
-	if not tilemap: return
+	if not tilemap: return 
 	var reach = 40.0
 	var offset = Vector2.ZERO
 	if last_direction == "down": offset.y = reach
@@ -201,6 +231,7 @@ func _check_for_trees_with_axe(hits_required: int) -> void:
 		_damage_tree_with_hits(map_pos, hits_required)
 
 func _damage_tree_with_hits(pos: Vector2i, hits_required: int) -> void:
+	if not tilemap: return
 	if not tree_health.has(pos):
 		tree_health[pos] = hits_required
 	tree_health[pos] -= 1
@@ -213,7 +244,7 @@ func _damage_tree_with_hits(pos: Vector2i, hits_required: int) -> void:
 		_respawn_tree(pos)
 
 func _check_for_trees():
-	if not tilemap: return
+	if not tilemap: return 
 	var reach = 40.0
 	var offset = Vector2.ZERO
 	if last_direction == "down": offset.y = reach
@@ -226,8 +257,9 @@ func _check_for_trees():
 		_damage_tree(map_pos)
 
 func _damage_tree(pos: Vector2i):
+	if not tilemap: return
 	if not tree_health.has(pos): 
-		tree_health[pos] = 5  # default 5 hits
+		tree_health[pos] = 5 
 	tree_health[pos] -= 1
 	if tree_health[pos] <= 0:
 		tilemap.set_cell(pos, -1)
@@ -252,7 +284,7 @@ func collect_item(item_name: String) -> void:
 func die() -> void:
 	if is_dead: return
 	is_dead = true
-	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)  # reset color before dying
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$AnimatedSprite2D.play("die")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()

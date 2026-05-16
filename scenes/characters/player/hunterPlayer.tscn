@@ -254,7 +254,6 @@ radius = 6.0067987
 
 [node name="HunterCharacter" type="CharacterBody2D" unique_id=1091941096]
 scale = Vector2(3.5, 3.5)
-collision_mask = 3
 script = ExtResource("1_5a25m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=17635858]

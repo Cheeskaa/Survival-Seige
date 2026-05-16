@@ -24,4 +24,4 @@ func _go_to_next_scene() -> void:
 	if background_music:
 		background_music.stop()
 		
-	get_tree().change_scene_to_file("res://scenes/test_map.tscn")
+	get_tree().change_scene_to_file("res://scenes/World.tscn")

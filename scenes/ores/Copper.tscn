@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dyx7ant8tnh5c"]
+
+[ext_resource type="Script" uid="uid://dhav2dao86ym5" path="res://scenes/ores/copper.gd" id="1_68v3q"]
+[ext_resource type="Texture2D" uid="uid://h1aww47ask0b" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_w3qf3"]
+[ext_resource type="PackedScene" uid="uid://c1my1fps87yks" path="res://scenes/ores/gem.tscn" id="2_aual2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_68v3q"]
+radius = 20.09975
+
+[node name="Copper" type="StaticBody2D" unique_id=1886957042]
+script = ExtResource("1_68v3q")
+gem_scene = ExtResource("2_aual2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=822754209]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_w3qf3")
+region_enabled = true
+region_rect = Rect2(112.04851, 224.97775, 31.84758, 29.262054)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=618628322]
+shape = SubResource("CircleShape2D_68v3q")
