@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1fq3epy3won0" path="res://sprites/UI - Tiny Swords/Buttons/Button_Hover_3Slides.png" id="4_u4qax"]
 [ext_resource type="FontFile" uid="uid://ba2ggtcvyvuen" path="res://sprites/fonts/PirataOne-Regular.ttf" id="5_5byqq"]
 [ext_resource type="Texture2D" uid="uid://vnlpq54a5fyt" path="res://sprites/glogo.png" id="6_4v6gu"]
+[ext_resource type="AudioStream" uid="uid://c27nkmo5sd603" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Musics/20 - Good Time.ogg" id="8_u4qax"]
 
 [node name="StartMenu" type="Control" unique_id=671392228]
 layout_mode = 3
@@ -125,3 +126,7 @@ offset_bottom = 200.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_4v6gu")
+
+[node name="IntroMusic" type="AudioStreamPlayer2D" parent="." unique_id=647644854]
+stream = ExtResource("8_u4qax")
+parameters/looping = true

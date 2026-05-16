@@ -14,6 +14,17 @@ var icon_map = {
 	"MagicWand": preload("res://sprites/materials/Items/Weapons/MagicWand/Sprite.png"),
 }
 
+func _ready() -> void:
+	# Wait for everything to be ready
+	await get_tree().process_frame
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.inventory_changed.connect(update_slots)
+		# Manually trigger first update with current inventory
+		update_slots(player.inventory)
+	else:
+		print("ERROR: Player not found in inventory!")
+
 func update_slots(items: Dictionary) -> void:
 	if not grid: return
 	

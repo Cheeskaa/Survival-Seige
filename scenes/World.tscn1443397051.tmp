@@ -13,8 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://nyyle8b425o7" path="res://scenes/ShopUI.tscn" id="11_30fn3"]
 [ext_resource type="PackedScene" uid="uid://cn4kas2vd060a" path="res://scenes/characters/player/hunterPlayer.tscn" id="12_7c4bj"]
 [ext_resource type="Script" uid="uid://bih1hgoln6r2a" path="res://scripts/day_and_night_cycle.gd" id="13_nrtoj"]
-[ext_resource type="AudioStream" uid="uid://ddphdtyso7184" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Musics/22 - Dream.ogg" id="14_c0d7e"]
-[ext_resource type="AudioStream" uid="uid://02gguc3e7qis" path="res://FromAssetsPack/Ninja Adventure - Asset Pack/Audio/Musics/24 - Final Area.ogg" id="15_o1tcx"]
 
 [sub_resource type="Gradient" id="Gradient_nrtoj"]
 offsets = PackedFloat32Array(0, 0.53571427, 0.5885093)
@@ -157,11 +155,3 @@ texture_scale = 1.65
 
 [node name="DayAndNightCycle" type="CanvasModulate" parent="." unique_id=2044831201]
 script = ExtResource("13_nrtoj")
-
-[node name="DayMusic" type="AudioStreamPlayer2D" parent="." unique_id=191399994]
-stream = ExtResource("14_c0d7e")
-parameters/looping = true
-
-[node name="NightMusic" type="AudioStreamPlayer2D" parent="." unique_id=859751742]
-stream = ExtResource("15_o1tcx")
-parameters/looping = true
