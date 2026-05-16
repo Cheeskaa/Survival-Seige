@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dympda0gvh5ik"]
+
+[ext_resource type="Script" uid="uid://cvf51soackay1" path="res://scenes/options.gd" id="1_pxqj8"]
+[ext_resource type="FontFile" uid="uid://dedmx854flksl" path="res://sprites/Ui-NinjaAdventure/Font/NormalFont.ttf" id="2_nmn1p"]
+[ext_resource type="Texture2D" uid="uid://dvswpnnm6co1" path="res://sprites/inventory/InventoryRect.png" id="2_w238l"]
+[ext_resource type="Texture2D" uid="uid://beaq5qcmg206o" path="res://FromAssetsPack/01_Flat_Theme/Sprites/UI_Flat_ButtonCross01a.png" id="4_s26ps"]
+
+[node name="Options" type="Control" unique_id=1972742704]
+clip_contents = true
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 138.0
+offset_right = -796.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_pxqj8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1043323513]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.625
+offset_top = -127.75
+offset_right = 176.625
+offset_bottom = 127.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w238l")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=1673427407]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.375
+offset_top = -32.25
+offset_right = 161.625
+offset_bottom = 141.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=226678983]
+layout_mode = 2
+theme_override_constants/line_spacing = 1
+theme_override_constants/paragraph_spacing = 1
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_nmn1p")
+theme_override_font_sizes/font_size = 18
+text = "MASTER VOLUME"
+
+[node name="HSlider" type="HSlider" parent="NinePatchRect/VBoxContainer" unique_id=451298305]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer" unique_id=342967400]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_nmn1p")
+text = "MUTE"
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1054503059]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.375
+offset_top = 36.5
+offset_right = 173.625
+offset_bottom = 77.5
+grow_horizontal = 2
+theme_override_constants/line_spacing = 1
+theme_override_constants/paragraph_spacing = 1
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_nmn1p")
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1116737949]
+layout_mode = 0
+offset_left = 308.25
+offset_top = 65.5
+offset_right = 348.25
+offset_bottom = 105.5
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_s26ps")

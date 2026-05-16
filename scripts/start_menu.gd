@@ -10,10 +10,13 @@ func _ready():
 	exit_button.pressed.connect(_on_exit)
 
 func _on_start():
-	get_tree().change_scene_to_file("res://scenes/introvid.tscn")  # change to your actual intro story path
+	get_tree().change_scene_to_file("res://scenes/introvid.tscn")  
 
 func _on_options():
-	pass  # add options menu logic later
+	var options_scene = load("res://scenes/options.tscn") 
+	if options_scene:
+		var options_instance = options_scene.instantiate()
+		add_child(options_instance) # Spawns cleanly in front
 
 func _on_exit():
 	get_tree().quit()
